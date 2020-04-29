@@ -16,7 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		50DD60572454B77D004602A9 /* IDentify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IDentify.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		50DD60572454B77D004602A9 /* SeeForMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeeForMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50DD605A2454B77D004602A9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		50DD605C2454B77D004602A9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		50DD605E2454B77D004602A9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -48,7 +48,7 @@
 		50DD60582454B77D004602A9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				50DD60572454B77D004602A9 /* IDentify.app */,
+				50DD60572454B77D004602A9 /* SeeForMe.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -84,7 +84,7 @@
 			);
 			name = IDentify;
 			productName = IDentify;
-			productReference = 50DD60572454B77D004602A9 /* IDentify.app */;
+			productReference = 50DD60572454B77D004602A9 /* SeeForMe.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -292,7 +292,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Saba.IDentify;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = SeeForMe;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -310,7 +310,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Saba.IDentify;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = SeeForMe;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
