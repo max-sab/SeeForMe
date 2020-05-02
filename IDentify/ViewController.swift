@@ -7,14 +7,15 @@
 //
 
 import UIKit
+import AVFoundation
+import Vision
 
-class ViewController: UIViewController {
-
+class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-
 
 }
 

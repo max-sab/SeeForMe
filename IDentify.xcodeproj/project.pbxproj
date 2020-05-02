@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		50D613D4245AF742005561DB /* VisionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D613D3245AF741005561DB /* VisionViewController.swift */; };
+		50D613D6245C6C3A005561DB /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D613D5245C6C39005561DB /* CameraController.swift */; };
 		50DD605B2454B77D004602A9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DD605A2454B77D004602A9 /* AppDelegate.swift */; };
 		50DD605D2454B77D004602A9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DD605C2454B77D004602A9 /* SceneDelegate.swift */; };
 		50DD605F2454B77D004602A9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DD605E2454B77D004602A9 /* ViewController.swift */; };
@@ -16,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		50D613D3245AF741005561DB /* VisionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionViewController.swift; sourceTree = "<group>"; };
+		50D613D5245C6C39005561DB /* CameraController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
 		50DD60572454B77D004602A9 /* SeeForMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeeForMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50DD605A2454B77D004602A9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		50DD605C2454B77D004602A9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +67,8 @@
 				50DD60632454B784004602A9 /* Assets.xcassets */,
 				50DD60652454B784004602A9 /* LaunchScreen.storyboard */,
 				50DD60682454B784004602A9 /* Info.plist */,
+				50D613D3245AF741005561DB /* VisionViewController.swift */,
+				50D613D5245C6C39005561DB /* CameraController.swift */,
 			);
 			path = IDentify;
 			sourceTree = "<group>";
@@ -138,9 +144,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50D613D4245AF742005561DB /* VisionViewController.swift in Sources */,
 				50DD605F2454B77D004602A9 /* ViewController.swift in Sources */,
 				50DD605B2454B77D004602A9 /* AppDelegate.swift in Sources */,
 				50DD605D2454B77D004602A9 /* SceneDelegate.swift in Sources */,
+				50D613D6245C6C3A005561DB /* CameraController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,7 +224,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -270,7 +278,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -287,6 +295,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UNU6P3F2LX;
 				INFOPLIST_FILE = IDentify/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -305,6 +314,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UNU6P3F2LX;
 				INFOPLIST_FILE = IDentify/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

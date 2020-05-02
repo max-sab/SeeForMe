@@ -98,7 +98,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137.68115942028987" y="129.91071428571428"/>
+            <point key="canvasLocation" x="-365" y="-25"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="ezl-Wh-IQ0">
@@ -135,6 +135,9 @@
                                                         <integer key="value" value="5"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <segue destination="D6c-dh-RAf" kind="showDetail" id="9Or-3M-QjK"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IYI-Yx-hT1">
                                                 <rect key="frame" x="212" y="120" width="192" height="130"/>
@@ -166,7 +169,7 @@
                                                     <constraint firstAttribute="height" constant="130" id="80R-w1-zth"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="20"/>
-                                                <state key="normal" title="Read text!">
+                                                <state key="normal" title="Saved texts">
                                                     <color key="titleColor" red="0.066666666669999999" green="0.1764705882" blue="0.20392156859999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
@@ -179,7 +182,7 @@
                                                 <rect key="frame" x="212" y="116" width="192" height="130"/>
                                                 <color key="backgroundColor" red="0.17254901959999999" green="0.67843137249999996" blue="0.76862745099999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="20"/>
-                                                <state key="normal" title="Show color!">
+                                                <state key="normal" title="Saved colors">
                                                     <color key="titleColor" red="0.066666666669999999" green="0.1764705882" blue="0.20392156859999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
@@ -213,7 +216,7 @@
                                 </userDefinedRuntimeAttributes>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.80000000000000004" green="0.85882352941176465" blue="0.86274509803921573" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="IHh-2g-enH" firstAttribute="top" secondItem="PNd-Ag-k0w" secondAttribute="top" id="45W-0X-geC"/>
                             <constraint firstItem="IHh-2g-enH" firstAttribute="leading" secondItem="PNd-Ag-k0w" secondAttribute="leading" id="9iw-Hj-Ue8"/>
@@ -229,7 +232,55 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jxl-cd-QBu" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="960.86956521739137" y="129.91071428571428"/>
+            <point key="canvasLocation" x="514" y="-25"/>
+        </scene>
+        <!--Vision View Controller-->
+        <scene sceneID="PYf-ne-DSA">
+            <objects>
+                <viewController id="D6c-dh-RAf" customClass="VisionViewController" customModule="SeeForMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="WDT-Jb-KPB">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SeeForMe. Main" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WLf-Cy-K9W">
+                                <rect key="frame" x="0.0" y="0.0" width="222" height="38"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="29"/>
+                                <color key="textColor" red="0.066666666669999999" green="0.1764705882" blue="0.20392156859999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jv0-ng-b8U">
+                                <rect key="frame" x="184" y="778" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="scanReceipts:" destination="D6c-dh-RAf" eventType="touchUpInside" id="afZ-p0-cwy"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EuF-e6-c7H">
+                                <rect key="frame" x="0.0" y="38" width="414" height="710"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.80000000000000004" green="0.85882352939999995" blue="0.86274509799999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="WLf-Cy-K9W" firstAttribute="top" secondItem="Wzp-40-r9K" secondAttribute="top" id="1iQ-Dv-jXL"/>
+                            <constraint firstItem="EuF-e6-c7H" firstAttribute="top" secondItem="WLf-Cy-K9W" secondAttribute="bottom" id="AvK-z7-NXJ"/>
+                            <constraint firstItem="WLf-Cy-K9W" firstAttribute="leading" secondItem="Wzp-40-r9K" secondAttribute="leading" id="RiS-Gs-g1V"/>
+                            <constraint firstItem="jv0-ng-b8U" firstAttribute="top" secondItem="EuF-e6-c7H" secondAttribute="bottom" constant="30" id="TmV-FG-jW1"/>
+                            <constraint firstItem="jv0-ng-b8U" firstAttribute="centerX" secondItem="Wzp-40-r9K" secondAttribute="centerX" id="aRp-Iq-qY6"/>
+                            <constraint firstItem="Wzp-40-r9K" firstAttribute="bottom" secondItem="jv0-ng-b8U" secondAttribute="bottom" id="btM-Rw-H70"/>
+                            <constraint firstItem="EuF-e6-c7H" firstAttribute="leading" secondItem="Wzp-40-r9K" secondAttribute="leading" id="inv-AZ-C73"/>
+                            <constraint firstItem="Wzp-40-r9K" firstAttribute="trailing" secondItem="EuF-e6-c7H" secondAttribute="trailing" id="jYz-Ln-Big"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Wzp-40-r9K"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="QYl-3m-f4s"/>
+                    <connections>
+                        <outlet property="resultPreviewView" destination="EuF-e6-c7H" id="GAk-rN-EKY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7GA-n0-IFu" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1341" y="-125"/>
         </scene>
     </scenes>
     <resources>
