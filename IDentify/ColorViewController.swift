@@ -14,4 +14,8 @@ class ColorViewController: ActionViewController {
         super.viewDidLoad()
         
     }
+
+    @IBAction override func handleLongTapGesture(_ sender: UILongPressGestureRecognizer) {
+        //MARK: WPI
+    }
 }

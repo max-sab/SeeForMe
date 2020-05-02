@@ -11,37 +11,18 @@ import UIKit
 class ActionViewController: UIViewController {
     @IBOutlet weak var resultPreviewView: UIView!
 
-    private let cameraController = CameraController()
-    private let voiceController = VoiceController()
-    private let visionController = VisionController()
+    let cameraController = CameraController()
+    let voiceController = VoiceController()
+    let visionController = VisionController()
 
-        override func viewDidLoad() {
-            super.viewDidLoad()
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-            //configuring our camera controller for proper usage in the future
-            setupCameraController()
-        }
+        //configuring our camera controller for proper usage in the future
+        setupCameraController()
+    }
 
-    @IBAction func handleLongTapGesture(_ sender: UILongPressGestureRecognizer) {
-        if sender.state == .began {
-            cameraController.captureImage {(image, error) in
-                guard let cgImage = image?.cgImage else {
-                    print(error ?? "Error occured while capturing image or converting it to CGImage type")
-                    return
-                }
-
-                self.visionController.processReceived(cgImage: cgImage, completion: { (text, error) in
-                    if error != nil {
-                        print(error!)
-                        return
-                    }
-
-                    self.voiceController.read(text: text)
-                })
-
-                return
-            }
-        }
+     @IBAction func handleLongTapGesture(_ sender: UILongPressGestureRecognizer) {
     }
 
     @IBAction func handleTapGesture(_ sender: UITapGestureRecognizer) {
