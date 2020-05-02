@@ -13,20 +13,15 @@ import AVFoundation
 
 class VisionViewController: UIViewController {
 
-     @IBOutlet weak var resultPreviewView: UIView!
-    // Dispatch queue to perform Vision requests.
-    private let textRecognitionQueue = DispatchQueue(label: "com.saba.textRecognitionQueue",
-                                                         qos: .userInitiated, attributes: [], autoreleaseFrequency: .workItem)
-    private var currentTextResult = ""
+    @IBOutlet weak var resultPreviewView: UIView!
+
     private let cameraController = CameraController()
     private let voiceController = VoiceController()
-    private var request: VNRecognizeTextRequest?
+    private let visionController = VisionController()
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        //set up our text recongition request
-        setupVisionRequest()
 
         //configuring our camera controller for proper usage in the future
         setupCameraController()
@@ -40,29 +35,17 @@ class VisionViewController: UIViewController {
                     return
                 }
 
-                self.processReceived(cgImage: cgImage)
+                self.visionController.processReceived(cgImage: cgImage, completion: { (text, error) in
+                    if error != nil {
+                        print(error!)
+                        return
+                    }
+
+                    self.voiceController.read(text: text)
+                })
+
                 return
             }
-        }
-    }
-
-    private func processReceived(cgImage: CGImage) {
-        guard let request = request else {
-            return
-        }
-
-        //perform an async call for text recognition
-        self.textRecognitionQueue.async {
-            self.currentTextResult = ""
-            let requestHandler = VNImageRequestHandler(cgImage: cgImage, orientation: .right, options: [:])
-            do {
-                try requestHandler.perform([request])
-            } catch {
-                print(error)
-            }
-            DispatchQueue.main.async(execute: {
-                self.voiceController.read(text: self.currentTextResult)
-            })
         }
     }
 
@@ -77,24 +60,5 @@ class VisionViewController: UIViewController {
             }
             try? self.cameraController.showCameraPreview(on: self.resultPreviewView)
         }
-    }
-
-    // Setup Vision request in order to reuse it in the future
-    private func setupVisionRequest() {
-        request = VNRecognizeTextRequest { (request, error) in
-            guard let observations = request.results as? [VNRecognizedTextObservation] else {
-                print("Unexpected type of observations received")
-                return
-            }
-            let maximumCandidates = 1
-            for observation in observations {
-                guard let candidate = observation.topCandidates(maximumCandidates).first else { continue }
-                self.currentTextResult += candidate.string + "\n"
-            }
-        }
-
-        // implicitly unwrapping request because we just initialized it above
-        request!.recognitionLevel = .accurate
-        request!.usesLanguageCorrection = true
     }
 }

@@ -14,7 +14,7 @@ struct VoiceController {
     private let synthesizer = AVSpeechSynthesizer()
 
     func read(text input: String) {
-        //print(self.currentTextResult)
+        //print(input)
         let utterance = AVSpeechUtterance(string: input)
         utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
         utterance.rate = utteranceRate
