@@ -11,10 +11,11 @@ import Vision
 import VisionKit
 import AVFoundation
 
+//FIXME: Remove after use
+import Photos
+
 class VisionViewController: UIViewController {
 
-    // Vision requests to be performed on each page of the scanned document.
-    private var requests = [VNRequest]()
     // Dispatch queue to perform Vision requests.
     private let textRecognitionWorkQueue = DispatchQueue(label: "TextRecognitionQueue",
                                                          qos: .userInitiated, attributes: [], autoreleaseFrequency: .workItem)
@@ -23,9 +24,31 @@ class VisionViewController: UIViewController {
 
     @IBOutlet weak var resultPreviewView: UIView!
 
+    var request: VNRecognizeTextRequest!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        //set up our text recongition request
+        setupVision()
+
+        //configuring our camera controller for proper usage in the future
+        configureCameraController()
+    }
+
+    private func configureCameraController() {
+        cameraController.setupCamera {(error) in
+            if let error = error {
+                print(error)
+            }
+
+            try? self.cameraController.displayPreview(on: self.resultPreviewView)
+        }
+    }
+
     // Setup Vision request as the request can be reused
     private func setupVision() {
-        let textRecognitionRequest = VNRecognizeTextRequest { (request, error) in
+        request = VNRecognizeTextRequest { (request, error) in
             guard let observations = request.results as? [VNRecognizedTextObservation] else {
                 print("The observations are of an unexpected type.")
                 return
@@ -38,41 +61,35 @@ class VisionViewController: UIViewController {
             }
         }
         // specify the recognition level
-        textRecognitionRequest.recognitionLevel = .accurate
-        self.requests = [textRecognitionRequest]
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        setupVision()
-
-        func configureCameraController() {
-            cameraController.setupCamera {(error) in
-                if let error = error {
-                    print(error)
-                }
-
-                try? self.cameraController.displayPreview(on: self.resultPreviewView)
-            }
-        }
-
-        configureCameraController()
+        request.recognitionLevel = .accurate
+        request.usesLanguageCorrection = true
     }
 
     @IBAction func scanReceipts(_ sender: UIControl?) {
+        guard let request = request else {
+            return
+        }
         cameraController.captureImage {(image, error) in
             guard let image = image else {
                 print(error ?? "Image capture error")
                 return
             }
 
+            do {
+                try PHPhotoLibrary.shared().performChangesAndWait {
+                    PHAssetChangeRequest.creationRequestForAsset(from: image)
+                }
+            } catch {
+                print(error)
+            }
+
+            //perform an async call for text recognition
             self.textRecognitionWorkQueue.async {
                 self.resultingText = ""
                 if let cgImage = image.cgImage {
-                    let requestHandler = VNImageRequestHandler(cgImage: cgImage, options: [:])
+                    let requestHandler = VNImageRequestHandler(cgImage: cgImage, orientation: .right, options: [:])
                     do {
-                        try requestHandler.perform(self.requests)
+                        try requestHandler.perform([request])
                     } catch {
                         print(error)
                     }
@@ -82,7 +99,7 @@ class VisionViewController: UIViewController {
                     print(self.resultingText)
                     let utterance = AVSpeechUtterance(string: self.resultingText)
                     utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-
+                    utterance.rate = 0.5
                     let synthesizer = AVSpeechSynthesizer()
                     synthesizer.speak(utterance)
                 })

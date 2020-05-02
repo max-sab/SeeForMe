@@ -31,7 +31,7 @@ class CameraController: NSObject {
 
                 self.camera = captureDevice
                 try captureDevice.lockForConfiguration()
-                captureDevice.videoZoomFactor = 2
+                //captureDevice.videoZoomFactor = 2
                 captureDevice.autoFocusRangeRestriction = .near
                 captureDevice.unlockForConfiguration()
 
@@ -98,6 +98,7 @@ extension CameraController: AVCapturePhotoCaptureDelegate {
             self.photoCompletion?(nil, CameraControllerError.photoDataIsInvalid)
         }
     }
+
     //workaround to remove shutter soundso
     func photoOutput(_ output: AVCapturePhotoOutput, willCapturePhotoFor resolvedSettings: AVCaptureResolvedPhotoSettings) {
         AudioServicesDisposeSystemSoundID(1108)
