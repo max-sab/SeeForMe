@@ -11,60 +11,60 @@ import Vision
 import VisionKit
 import AVFoundation
 
-class VisionViewController: UIViewController {
+class VisionViewController: ActionViewController {
 
-    @IBOutlet weak var resultPreviewView: UIView!
-
-    private let cameraController = CameraController()
-    private let voiceController = VoiceController()
-    private let visionController = VisionController()
+//    @IBOutlet weak var resultPreviewView: UIView!
+//
+//    private let cameraController = CameraController()
+//    private let voiceController = VoiceController()
+//    private let visionController = VisionController()
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         //configuring our camera controller for proper usage in the future
-        setupCameraController()
+//        setupCameraController()
     }
 
-    @IBAction func handleLongTapGesture(_ sender: UILongPressGestureRecognizer) {
-        if sender.state == .began {
-            cameraController.captureImage {(image, error) in
-                guard let cgImage = image?.cgImage else {
-                    print(error ?? "Error occured while capturing image or converting it to CGImage type")
-                    return
-                }
+//    @IBAction func handleLongTapGesture(_ sender: UILongPressGestureRecognizer) {
+//        if sender.state == .began {
+//            cameraController.captureImage {(image, error) in
+//                guard let cgImage = image?.cgImage else {
+//                    print(error ?? "Error occured while capturing image or converting it to CGImage type")
+//                    return
+//                }
+//
+//                self.visionController.processReceived(cgImage: cgImage, completion: { (text, error) in
+//                    if error != nil {
+//                        print(error!)
+//                        return
+//                    }
+//
+//                    self.voiceController.read(text: text)
+//                })
+//
+//                return
+//            }
+//        }
+//    }
+//
+//    @IBAction func handleTapGesture(_ sender: UITapGestureRecognizer) {
+//        voiceController.toggleSpeechSynthesizerState()
+//    }
+//
+//    @IBAction func handleScreenEdgePanGesture(_ sender: UIScreenEdgePanGestureRecognizer) {
+//        if sender.state == .began {
+//            self.dismiss(animated: true, completion: nil)
+//        }
+//    }
 
-                self.visionController.processReceived(cgImage: cgImage, completion: { (text, error) in
-                    if error != nil {
-                        print(error!)
-                        return
-                    }
-
-                    self.voiceController.read(text: text)
-                })
-
-                return
-            }
-        }
-    }
-
-    @IBAction func handleTapGesture(_ sender: UITapGestureRecognizer) {
-        voiceController.toggleSpeechSynthesizerState()
-    }
-
-    @IBAction func handleScreenEdgePanGesture(_ sender: UIScreenEdgePanGestureRecognizer) {
-        if sender.state == .began {
-            self.dismiss(animated: true, completion: nil)
-        }
-    }
-
-    private func setupCameraController() {
-        cameraController.setupCamera {(error) in
-            if let error = error {
-                print(error)
-            }
-            try? self.cameraController.showCameraPreview(on: self.resultPreviewView)
-        }
-    }
+//    private func setupCameraController() {
+//        cameraController.setupCamera {(error) in
+//            if let error = error {
+//                print(error)
+//            }
+//            try? self.cameraController.showCameraPreview(on: self.resultPreviewView)
+//        }
+//    }
 }

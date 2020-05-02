@@ -154,6 +154,7 @@
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="showColorsButtonPressed:" destination="ceH-ce-BGg" eventType="touchUpInside" id="29M-r1-4cp"/>
+                                                    <segue destination="y8b-bb-vIy" kind="presentation" modalPresentationStyle="fullScreen" id="oyM-nR-hNk"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -278,7 +279,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="SqH-ta-QWh"/>
                     <connections>
-                        <outlet property="resultPreviewView" destination="EuF-e6-c7H" id="GAk-rN-EKY"/>
+                        <outlet property="resultPreviewView" destination="EuF-e6-c7H" id="jYK-Uz-neL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7GA-n0-IFu" sceneMemberID="firstResponder"/>
@@ -289,7 +290,7 @@
                 </tapGestureRecognizer>
                 <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="1" id="QuF-ap-4hp">
                     <connections>
-                        <action selector="handleLongTapGesture:" destination="D6c-dh-RAf" id="HnN-Tu-1ad"/>
+                        <action selector="handleLongTapGesture:" destination="D6c-dh-RAf" id="dFu-de-ph1"/>
                     </connections>
                 </pongPressGestureRecognizer>
                 <screenEdgePanGestureRecognizer minimumNumberOfTouches="1" id="KuF-wa-bLC">
@@ -299,7 +300,70 @@
                     </connections>
                 </screenEdgePanGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1341" y="-125"/>
+            <point key="canvasLocation" x="1309" y="-413"/>
+        </scene>
+        <!--Color View Controller-->
+        <scene sceneID="iL5-Mi-zDg">
+            <objects>
+                <viewController id="y8b-bb-vIy" customClass="ColorViewController" customModule="SeeForMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="S1G-sv-yCA">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SeeForMe. What color?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="69S-z2-Y1G">
+                                <rect key="frame" x="0.0" y="44" width="316" height="38"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="29"/>
+                                <color key="textColor" red="0.066666666669999999" green="0.1764705882" blue="0.20392156859999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xgh-kH-ghn">
+                                <rect key="frame" x="0.0" y="82" width="414" height="780"/>
+                                <color key="backgroundColor" red="0.80000000000000004" green="0.85882352939999995" blue="0.86274509799999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="e1m-8c-Gu4" appends="YES" id="LsS-u0-odK"/>
+                                </connections>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.80000000000000004" green="0.85882352939999995" blue="0.86274509799999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="69S-z2-Y1G" firstAttribute="leading" secondItem="5Sj-hn-9dG" secondAttribute="leading" id="1Hc-DP-yv7"/>
+                            <constraint firstItem="xgh-kH-ghn" firstAttribute="top" secondItem="69S-z2-Y1G" secondAttribute="bottom" id="MDB-qn-pAd"/>
+                            <constraint firstItem="5Sj-hn-9dG" firstAttribute="trailing" secondItem="xgh-kH-ghn" secondAttribute="trailing" id="NTW-VH-yrB"/>
+                            <constraint firstItem="5Sj-hn-9dG" firstAttribute="bottom" secondItem="xgh-kH-ghn" secondAttribute="bottom" id="Tnn-1g-Q74"/>
+                            <constraint firstItem="xgh-kH-ghn" firstAttribute="leading" secondItem="5Sj-hn-9dG" secondAttribute="leading" id="jNo-FO-7mw"/>
+                            <constraint firstItem="69S-z2-Y1G" firstAttribute="top" secondItem="5Sj-hn-9dG" secondAttribute="top" id="s89-m5-hhE"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="5Sj-hn-9dG"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="wxr-BX-a4b" appends="YES" id="fl9-yQ-K85"/>
+                            <outletCollection property="gestureRecognizers" destination="Dsg-DX-b4d" appends="YES" id="uZ5-kc-QNK"/>
+                        </connections>
+                    </view>
+                    <navigationItem key="navigationItem" id="cVh-8d-9yU"/>
+                    <connections>
+                        <outlet property="resultPreviewView" destination="xgh-kH-ghn" id="EA7-jd-N5Y"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CGe-8e-E9f" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="wxr-BX-a4b">
+                    <connections>
+                        <action selector="handleTapGesture:" destination="y8b-bb-vIy" id="klR-vS-k0y"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="1" id="Dsg-DX-b4d">
+                    <connections>
+                        <action selector="handleLongTapGesture:" destination="y8b-bb-vIy" id="jun-D6-5uk"/>
+                    </connections>
+                </pongPressGestureRecognizer>
+                <screenEdgePanGestureRecognizer minimumNumberOfTouches="1" id="e1m-8c-Gu4">
+                    <rectEdge key="edges" left="YES"/>
+                    <connections>
+                        <action selector="handleScreenEdgePanGesture:" destination="y8b-bb-vIy" id="oXf-td-XGs"/>
+                    </connections>
+                </screenEdgePanGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="1309" y="242"/>
         </scene>
     </scenes>
     <resources>
