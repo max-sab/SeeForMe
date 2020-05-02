@@ -255,6 +255,9 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EuF-e6-c7H">
                                 <rect key="frame" x="0.0" y="82" width="414" height="780"/>
                                 <color key="backgroundColor" red="0.80000000000000004" green="0.85882352939999995" blue="0.86274509799999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="KuF-wa-bLC" appends="YES" id="tNb-8l-4up"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.80000000000000004" green="0.85882352939999995" blue="0.86274509799999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -289,6 +292,12 @@
                         <action selector="handleLongTapGesture:" destination="D6c-dh-RAf" id="HnN-Tu-1ad"/>
                     </connections>
                 </pongPressGestureRecognizer>
+                <screenEdgePanGestureRecognizer minimumNumberOfTouches="1" id="KuF-wa-bLC">
+                    <rectEdge key="edges" left="YES"/>
+                    <connections>
+                        <action selector="handleScreenEdgePanGesture:" destination="D6c-dh-RAf" id="ptM-Vo-lD9"/>
+                    </connections>
+                </screenEdgePanGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1341" y="-125"/>
         </scene>

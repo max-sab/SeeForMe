@@ -53,6 +53,12 @@ class VisionViewController: UIViewController {
         voiceController.toggleSpeechSynthesizerState()
     }
 
+    @IBAction func handleScreenEdgePanGesture(_ sender: UIScreenEdgePanGestureRecognizer) {
+        if sender.state == .began {
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
+
     private func setupCameraController() {
         cameraController.setupCamera {(error) in
             if let error = error {
