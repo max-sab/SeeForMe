@@ -11,9 +11,6 @@ import Vision
 import VisionKit
 import AVFoundation
 
-//FIXME: Remove after use
-import Photos
-
 class VisionViewController: UIViewController {
 
     // Dispatch queue to perform Vision requests.
@@ -73,14 +70,6 @@ class VisionViewController: UIViewController {
             guard let image = image else {
                 print(error ?? "Image capture error")
                 return
-            }
-
-            do {
-                try PHPhotoLibrary.shared().performChangesAndWait {
-                    PHAssetChangeRequest.creationRequestForAsset(from: image)
-                }
-            } catch {
-                print(error)
             }
 
             //perform an async call for text recognition
