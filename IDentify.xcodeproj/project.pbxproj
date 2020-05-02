@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5088167C245D9EBC0051FBC5 /* VoiceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5088167B245D9EBC0051FBC5 /* VoiceController.swift */; };
 		50D613D4245AF742005561DB /* VisionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D613D3245AF741005561DB /* VisionViewController.swift */; };
 		50D613D6245C6C3A005561DB /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D613D5245C6C39005561DB /* CameraController.swift */; };
 		50DD605B2454B77D004602A9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DD605A2454B77D004602A9 /* AppDelegate.swift */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5088167B245D9EBC0051FBC5 /* VoiceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceController.swift; sourceTree = "<group>"; };
 		50D613D3245AF741005561DB /* VisionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionViewController.swift; sourceTree = "<group>"; };
 		50D613D5245C6C39005561DB /* CameraController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
 		50DD60572454B77D004602A9 /* SeeForMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeeForMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -41,6 +43,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5088167D245D9F250051FBC5 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				50D613D5245C6C39005561DB /* CameraController.swift */,
+				5088167B245D9EBC0051FBC5 /* VoiceController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		50DD604E2454B77D004602A9 = {
 			isa = PBXGroup;
 			children = (
@@ -60,6 +71,7 @@
 		50DD60592454B77D004602A9 /* IDentify */ = {
 			isa = PBXGroup;
 			children = (
+				5088167D245D9F250051FBC5 /* Controllers */,
 				50DD605A2454B77D004602A9 /* AppDelegate.swift */,
 				50DD605C2454B77D004602A9 /* SceneDelegate.swift */,
 				50DD605E2454B77D004602A9 /* ViewController.swift */,
@@ -68,7 +80,6 @@
 				50DD60652454B784004602A9 /* LaunchScreen.storyboard */,
 				50DD60682454B784004602A9 /* Info.plist */,
 				50D613D3245AF741005561DB /* VisionViewController.swift */,
-				50D613D5245C6C39005561DB /* CameraController.swift */,
 			);
 			path = IDentify;
 			sourceTree = "<group>";
@@ -146,6 +157,7 @@
 			files = (
 				50D613D4245AF742005561DB /* VisionViewController.swift in Sources */,
 				50DD605F2454B77D004602A9 /* ViewController.swift in Sources */,
+				5088167C245D9EBC0051FBC5 /* VoiceController.swift in Sources */,
 				50DD605B2454B77D004602A9 /* AppDelegate.swift in Sources */,
 				50DD605D2454B77D004602A9 /* SceneDelegate.swift in Sources */,
 				50D613D6245C6C3A005561DB /* CameraController.swift in Sources */,

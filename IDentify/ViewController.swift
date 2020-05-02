@@ -10,12 +10,17 @@ import UIKit
 import AVFoundation
 import Vision
 
-class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
+class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
 
+    @IBAction func readTextButtonPressed(_ sender: UIButton) {
+        let controller = VisionViewController()
+        self.present(controller, animated: true, completion: nil)
+    }
+    @IBAction func showColorsButtonPressed(_ sender: UIButton) {
+    }
 }
 
