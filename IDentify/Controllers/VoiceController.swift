@@ -6,8 +6,26 @@
 //  Copyright © 2020 Maksym Sabadyshyn. All rights reserved.
 //
 
-import Foundation
+import AVFoundation
 
-class VoiceController {
-    
+struct VoiceController {
+    // 0.5 is default utteranceRate defined by Apple
+    private var utteranceRate: Float = 0.5
+    private let synthesizer = AVSpeechSynthesizer()
+
+    func read(text input: String) {
+        //print(self.currentTextResult)
+        let utterance = AVSpeechUtterance(string: input)
+        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+        utterance.rate = utteranceRate
+        synthesizer.speak(utterance)
+    }
+
+    func toggleSpeechSynthesizerState() {
+        if synthesizer.isPaused {
+            synthesizer.continueSpeaking()
+        } else {
+            synthesizer.pauseSpeaking(at: AVSpeechBoundary.word)
+        }
+    }
 }

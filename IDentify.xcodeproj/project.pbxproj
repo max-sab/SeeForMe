@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5088167C245D9EBC0051FBC5 /* VoiceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5088167B245D9EBC0051FBC5 /* VoiceController.swift */; };
+		5088167F245DAFC10051FBC5 /* VisionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5088167E245DAFC10051FBC5 /* VisionController.swift */; };
 		50D613D4245AF742005561DB /* VisionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D613D3245AF741005561DB /* VisionViewController.swift */; };
 		50D613D6245C6C3A005561DB /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D613D5245C6C39005561DB /* CameraController.swift */; };
 		50DD605B2454B77D004602A9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DD605A2454B77D004602A9 /* AppDelegate.swift */; };
@@ -20,6 +21,7 @@
 
 /* Begin PBXFileReference section */
 		5088167B245D9EBC0051FBC5 /* VoiceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceController.swift; sourceTree = "<group>"; };
+		5088167E245DAFC10051FBC5 /* VisionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionController.swift; sourceTree = "<group>"; };
 		50D613D3245AF741005561DB /* VisionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionViewController.swift; sourceTree = "<group>"; };
 		50D613D5245C6C39005561DB /* CameraController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
 		50DD60572454B77D004602A9 /* SeeForMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeeForMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -48,6 +50,7 @@
 			children = (
 				50D613D5245C6C39005561DB /* CameraController.swift */,
 				5088167B245D9EBC0051FBC5 /* VoiceController.swift */,
+				5088167E245DAFC10051FBC5 /* VisionController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -161,6 +164,7 @@
 				50DD605B2454B77D004602A9 /* AppDelegate.swift in Sources */,
 				50DD605D2454B77D004602A9 /* SceneDelegate.swift in Sources */,
 				50D613D6245C6C3A005561DB /* CameraController.swift in Sources */,
+				5088167F245DAFC10051FBC5 /* VisionController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

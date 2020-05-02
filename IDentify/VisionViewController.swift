@@ -19,6 +19,7 @@ class VisionViewController: UIViewController {
                                                          qos: .userInitiated, attributes: [], autoreleaseFrequency: .workItem)
     private var currentTextResult = ""
     private let cameraController = CameraController()
+    private let voiceController = VoiceController()
     private var request: VNRecognizeTextRequest?
 
     override func viewDidLoad() {
@@ -60,18 +61,13 @@ class VisionViewController: UIViewController {
                 print(error)
             }
             DispatchQueue.main.async(execute: {
-                print(self.currentTextResult)
-                let utterance = AVSpeechUtterance(string: self.currentTextResult)
-                utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-                utterance.rate = 0.4
-                let synthesizer = AVSpeechSynthesizer()
-                synthesizer.speak(utterance)
+                self.voiceController.read(text: self.currentTextResult)
             })
         }
     }
 
     @IBAction func handleTapGesture(_ sender: UITapGestureRecognizer) {
-        //MARK: WIP
+        voiceController.toggleSpeechSynthesizerState()
     }
 
     private func setupCameraController() {
