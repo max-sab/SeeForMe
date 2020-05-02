@@ -13,89 +13,92 @@ import AVFoundation
 
 class VisionViewController: UIViewController {
 
+     @IBOutlet weak var resultPreviewView: UIView!
     // Dispatch queue to perform Vision requests.
-    private let textRecognitionWorkQueue = DispatchQueue(label: "TextRecognitionQueue",
+    private let textRecognitionQueue = DispatchQueue(label: "com.saba.textRecognitionQueue",
                                                          qos: .userInitiated, attributes: [], autoreleaseFrequency: .workItem)
-    private var resultingText = ""
-    let cameraController = CameraController()
+    private var currentTextResult = ""
+    private let cameraController = CameraController()
+    private var request: VNRecognizeTextRequest?
 
-    @IBOutlet weak var resultPreviewView: UIView!
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-    var request: VNRecognizeTextRequest!
+        //set up our text recongition request
+        setupVisionRequest()
+
+        //configuring our camera controller for proper usage in the future
+        setupCameraController()
+    }
 
     @IBAction func handleLongTapGesture(_ sender: UILongPressGestureRecognizer) {
+        if sender.state == .began {
+            cameraController.captureImage {(image, error) in
+                guard let cgImage = image?.cgImage else {
+                    print(error ?? "Error occured while capturing image or converting it to CGImage type")
+                    return
+                }
+
+                self.processReceived(cgImage: cgImage)
+                return
+            }
+        }
+    }
+
+    private func processReceived(cgImage: CGImage) {
         guard let request = request else {
             return
         }
-        cameraController.captureImage {(image, error) in
-            guard let image = image else {
-                print(error ?? "Image capture error")
-                return
+        
+        //perform an async call for text recognition
+        self.textRecognitionQueue.async {
+            self.currentTextResult = ""
+            let requestHandler = VNImageRequestHandler(cgImage: cgImage, orientation: .right, options: [:])
+            do {
+                try requestHandler.perform([request])
+            } catch {
+                print(error)
             }
-
-            //perform an async call for text recognition
-            self.textRecognitionWorkQueue.async {
-                self.resultingText = ""
-                if let cgImage = image.cgImage {
-                    let requestHandler = VNImageRequestHandler(cgImage: cgImage, orientation: .right, options: [:])
-                    do {
-                        try requestHandler.perform([request])
-                    } catch {
-                        print(error)
-                    }
-                }
-                self.resultingText += "\n\n"
-                DispatchQueue.main.async(execute: {
-                    print(self.resultingText)
-                    let utterance = AVSpeechUtterance(string: self.resultingText)
-                    utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-                    utterance.rate = 0.5
-                    let synthesizer = AVSpeechSynthesizer()
-                    synthesizer.speak(utterance)
-                })
-            }
-            return
+            DispatchQueue.main.async(execute: {
+                print(self.currentTextResult)
+                let utterance = AVSpeechUtterance(string: self.currentTextResult)
+                utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+                utterance.rate = 0.4
+                let synthesizer = AVSpeechSynthesizer()
+                synthesizer.speak(utterance)
+            })
         }
     }
 
     @IBAction func handleTapGesture(_ sender: UITapGestureRecognizer) {
-    }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        resultPreviewView = UIView()
-        //set up our text recongition request
-        setupVision()
-
-        //configuring our camera controller for proper usage in the future
-        configureCameraController()
+        //MARK: WIP
     }
 
-    private func configureCameraController() {
+    private func setupCameraController() {
         cameraController.setupCamera {(error) in
             if let error = error {
                 print(error)
             }
-
             try? self.cameraController.displayPreview(on: self.resultPreviewView)
         }
     }
 
-    // Setup Vision request as the request can be reused
-    private func setupVision() {
+    // Setup Vision request in order to reuse it in the future
+    private func setupVisionRequest() {
         request = VNRecognizeTextRequest { (request, error) in
             guard let observations = request.results as? [VNRecognizedTextObservation] else {
-                print("The observations are of an unexpected type.")
+                print("Unexpected type of observations received")
                 return
             }
-            // Concatenate the recognised text from all the observations.
             let maximumCandidates = 1
             for observation in observations {
                 guard let candidate = observation.topCandidates(maximumCandidates).first else { continue }
-                self.resultingText += candidate.string + "\n"
+                self.currentTextResult += candidate.string + "\n"
             }
         }
-        // specify the recognition level
-        request.recognitionLevel = .accurate
-        request.usesLanguageCorrection = true
+
+        // implicitly unwrapping request because we just initialized it above
+        request!.recognitionLevel = .accurate
+        request!.usesLanguageCorrection = true
     }
 }

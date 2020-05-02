@@ -284,7 +284,7 @@
                         <action selector="handleTapGesture:" destination="D6c-dh-RAf" id="Sj1-lm-Fqk"/>
                     </connections>
                 </tapGestureRecognizer>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="QuF-ap-4hp">
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="1" id="QuF-ap-4hp">
                     <connections>
                         <action selector="handleLongTapGesture:" destination="D6c-dh-RAf" id="HnN-Tu-1ad"/>
                     </connections>
