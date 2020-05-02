@@ -29,11 +29,10 @@ class CameraController: NSObject {
                 //MARK: Congiguring capture device
                 guard let captureDevice = AVCaptureDevice.default(.builtInWideAngleCamera, for: AVMediaType.video, position: .back) else { throw CameraControllerError.cameraIsMissing }
 
-                self.camera = captureDevice
                 try captureDevice.lockForConfiguration()
-                //captureDevice.videoZoomFactor = 2
                 captureDevice.autoFocusRangeRestriction = .near
                 captureDevice.unlockForConfiguration()
+                self.camera = captureDevice
 
                 //MARK: Congiguring device input
                 guard let captureSession = self.captureSession else { throw CameraControllerError.captureSessionIsNotFound }
@@ -68,13 +67,12 @@ class CameraController: NSObject {
     }
 
 
-    func displayPreview(on view: UIView) throws {
+    func showCameraPreview(on view: UIView) throws {
         guard let captureSession = self.captureSession, captureSession.isRunning else { throw CameraControllerError.captureSessionIsNotFound }
 
         self.cameraPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-        self.cameraPreviewLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
         self.cameraPreviewLayer?.connection?.videoOrientation = .portrait
-
+        self.cameraPreviewLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
         view.layer.insertSublayer(self.cameraPreviewLayer!, at: 0)
         self.cameraPreviewLayer?.frame = view.frame
     }
@@ -99,7 +97,7 @@ extension CameraController: AVCapturePhotoCaptureDelegate {
         }
     }
 
-    //workaround to remove shutter soundso
+    //workaround to remove shutter sound
     func photoOutput(_ output: AVCapturePhotoOutput, willCapturePhotoFor resolvedSettings: AVCaptureResolvedPhotoSettings) {
         AudioServicesDisposeSystemSoundID(1108)
     }

@@ -49,7 +49,7 @@ class VisionViewController: UIViewController {
         guard let request = request else {
             return
         }
-        
+
         //perform an async call for text recognition
         self.textRecognitionQueue.async {
             self.currentTextResult = ""
@@ -79,7 +79,7 @@ class VisionViewController: UIViewController {
             if let error = error {
                 print(error)
             }
-            try? self.cameraController.displayPreview(on: self.resultPreviewView)
+            try? self.cameraController.showCameraPreview(on: self.resultPreviewView)
         }
     }
 
