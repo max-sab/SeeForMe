@@ -9,6 +9,7 @@
 import UIKit
 
 class ColorController {
+
     func findAverageColorFor(image: UIImage) {
         var bitmap = [UInt8](repeating: 0, count: 4)
         let context = CIContext()
@@ -25,4 +26,20 @@ class ColorController {
         let result = UIColor(red: CGFloat(bitmap[0]) / 255.0, green: CGFloat(bitmap[1]) / 255.0, blue: CGFloat(bitmap[2]) / 255.0, alpha: CGFloat(bitmap[3]) / 255.0)
 
     }
+
+    func distanceBetween(colorOne: UIColor, and colorTwo: UIColor) -> Double {
+        let colorOneRGBA = colorOne.rgba
+        let colorTwoRGBA = colorTwo.rgba
+
+        let redMeanLevel = (colorOneRGBA.red + colorTwoRGBA.red) / 2
+        let deltaRed = colorOneRGBA.red - colorTwoRGBA.red
+        let deltaBlue = colorOneRGBA.blue - colorTwoRGBA.blue
+        let deltaGreen = colorOneRGBA.green - colorTwoRGBA.green
+
+        let distance = (2 + (redMeanLevel / 256) * (deltaRed * deltaRed) + (4 * (deltaGreen * deltaGreen)) + (2 + (255 - redMeanLevel) / 256) * (deltaBlue * deltaBlue)).squareRoot()
+
+        return Double(distance)
+    }
+
+
 }
