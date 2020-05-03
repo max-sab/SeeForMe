@@ -24,13 +24,21 @@ extension UIImage {
 }
 
 extension UIColor {
-    var rgba: (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
-        var red: CGFloat = 0
-        var green: CGFloat = 0
-        var blue: CGFloat = 0
-        var alpha: CGFloat = 0
-        getRed(&red, green: &green, blue: &blue, alpha: &alpha)
+//    var rgba: (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
+//        var red: CGFloat = 0
+//        var green: CGFloat = 0
+//        var blue: CGFloat = 0
+//        var alpha: CGFloat = 0
+//        getRed(&red, green: &green, blue: &blue, alpha: &alpha)
+//
+//        return (red, green, blue, alpha)
+//    }
 
-        return (red, green, blue, alpha)
+    var coreImageColor: CIColor {
+        return CIColor(color: self)
+    }
+    var rgb: (red: CGFloat, green: CGFloat, blue: CGFloat) {
+        let coreImageColor = self.coreImageColor
+        return (coreImageColor.red * 255, coreImageColor.green * 255, coreImageColor.blue * 255)
     }
 }

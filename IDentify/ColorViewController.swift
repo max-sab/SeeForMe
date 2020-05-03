@@ -10,6 +10,8 @@ import UIKit
 import Photos
 
 class ColorViewController: ActionViewController {
+    //MARK: ONLY FOR TESTING PURPOSES
+    @IBOutlet var mainView: UIView!
     let colorController = ColorController()
     lazy var colorsCollection = DatabaseController.shared.getGeneralColors()
 
@@ -26,11 +28,16 @@ class ColorViewController: ActionViewController {
                     return
                 }
                 let averageCentralColor = self.colorController.findAverageColorFor(image: image.crop())
-                self.colorController.findClosestColor(for: averageCentralColor, among: self.colorsCollection)
 
-//                try? PHPhotoLibrary.shared().performChangesAndWait {
-//                    PHAssetChangeRequest.creationRequestForAsset(from: image.crop())
-//                }
+                //MARK: ONLY FOR DEV PURPOSES
+                self.mainView.backgroundColor = averageCentralColor
+
+                let res = self.colorController.findClosestColor(for: averageCentralColor, among: self.colorsCollection)
+                print(res)
+
+                try? PHPhotoLibrary.shared().performChangesAndWait {
+                    PHAssetChangeRequest.creationRequestForAsset(from: image.crop())
+                }
             }
         }
     }
