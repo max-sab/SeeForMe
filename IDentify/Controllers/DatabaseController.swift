@@ -53,4 +53,35 @@ class DatabaseController {
 
         return generalColors
     }
+
+    func getSavedTexts() -> [SavedText]{
+        guard let connection = connection else {
+            fatalError()
+        }
+
+        let savedTextsTable = Table("Texts")
+        let id = Expression<Int>("id")
+        let content = Expression<String>("content")
+        let dateSaved = Expression<String>("date")
+        var texts = [SavedText]()
+
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd-MM-yyyy HH:mm"
+
+        do {
+            print("Before connection")
+            for text in try connection.prepare(savedTextsTable) {
+                guard let date = formatter.date(from: text[dateSaved]) else {
+                    print("Date incorrect")
+                    return []
+                }
+                print("\(date)")
+                texts.append(SavedText(id: text[id], content: text[content], dateSaved: Date.distantFuture))
+            }
+        } catch {
+            print(error)
+        }
+
+        return texts
+    }
 }

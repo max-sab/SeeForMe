@@ -18,6 +18,7 @@
 		509A6ABC245F1A8000AFC486 /* SFMDB.db in Resources */ = {isa = PBXBuildFile; fileRef = 509A6ABB245F068E00AFC486 /* SFMDB.db */; };
 		509A6ABE245F5EEF00AFC486 /* SavedTextsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509A6ABD245F5EEF00AFC486 /* SavedTextsViewController.swift */; };
 		509A6AC2245F5F3300AFC486 /* SavedColorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509A6AC1245F5F3300AFC486 /* SavedColorsViewController.swift */; };
+		50B663C0245F704400DA6CE9 /* SavedText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B663BF245F704400DA6CE9 /* SavedText.swift */; };
 		50D613D4245AF742005561DB /* VisionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D613D3245AF741005561DB /* VisionViewController.swift */; };
 		50D613D6245C6C3A005561DB /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D613D5245C6C39005561DB /* CameraController.swift */; };
 		50DD605B2454B77D004602A9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DD605A2454B77D004602A9 /* AppDelegate.swift */; };
@@ -39,6 +40,7 @@
 		509A6ABB245F068E00AFC486 /* SFMDB.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = SFMDB.db; sourceTree = "<group>"; };
 		509A6ABD245F5EEF00AFC486 /* SavedTextsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedTextsViewController.swift; sourceTree = "<group>"; };
 		509A6AC1245F5F3300AFC486 /* SavedColorsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedColorsViewController.swift; sourceTree = "<group>"; };
+		50B663BF245F704400DA6CE9 /* SavedText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedText.swift; sourceTree = "<group>"; };
 		50D613D3245AF741005561DB /* VisionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionViewController.swift; sourceTree = "<group>"; };
 		50D613D5245C6C39005561DB /* CameraController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
 		50DD60572454B77D004602A9 /* SeeForMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeeForMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -125,6 +127,7 @@
 				50DD60652454B784004602A9 /* LaunchScreen.storyboard */,
 				50DD60682454B784004602A9 /* Info.plist */,
 				509A6AB4245EED0300AFC486 /* ImageUtils.swift */,
+				50B663BF245F704400DA6CE9 /* SavedText.swift */,
 			);
 			path = IDentify;
 			sourceTree = "<group>";
@@ -208,6 +211,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				50D613D4245AF742005561DB /* VisionViewController.swift in Sources */,
+				50B663C0245F704400DA6CE9 /* SavedText.swift in Sources */,
 				509A6AB3245EEC6C00AFC486 /* ColorController.swift in Sources */,
 				50DD605F2454B77D004602A9 /* ViewController.swift in Sources */,
 				50881681245DD9510051FBC5 /* ColorViewController.swift in Sources */,

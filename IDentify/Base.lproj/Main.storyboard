@@ -293,12 +293,20 @@
                                 <color key="textColor" red="0.066666666669999999" green="0.1764705882" blue="0.20392156859999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KlC-uH-mmd">
+                                <rect key="frame" x="0.0" y="82" width="414" height="780"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.80000000000000004" green="0.85882352939999995" blue="0.86274509799999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="KlC-uH-mmd" firstAttribute="leading" secondItem="RR2-9Z-0zB" secondAttribute="leading" id="5Qo-oM-HOY"/>
                             <constraint firstItem="j7c-Cx-rMZ" firstAttribute="top" secondItem="RR2-9Z-0zB" secondAttribute="top" id="LMJ-Gz-CCl"/>
                             <constraint firstItem="j7c-Cx-rMZ" firstAttribute="leading" secondItem="RR2-9Z-0zB" secondAttribute="leading" id="Rfw-xV-Gma"/>
+                            <constraint firstItem="RR2-9Z-0zB" firstAttribute="bottom" secondItem="KlC-uH-mmd" secondAttribute="bottom" id="Tzg-pU-aJ1"/>
+                            <constraint firstItem="RR2-9Z-0zB" firstAttribute="trailing" secondItem="KlC-uH-mmd" secondAttribute="trailing" id="jtP-ld-dSU"/>
+                            <constraint firstItem="KlC-uH-mmd" firstAttribute="top" secondItem="j7c-Cx-rMZ" secondAttribute="bottom" id="pU6-uR-5h7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="RR2-9Z-0zB"/>
                         <connections>
@@ -307,6 +315,9 @@
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" id="qaM-LE-WH2"/>
+                    <connections>
+                        <outlet property="savedTextsTableView" destination="KlC-uH-mmd" id="fKj-VD-mY3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JnI-Ch-ejF" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="0Dz-D2-VgQ">
