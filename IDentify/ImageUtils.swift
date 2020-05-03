@@ -53,74 +53,83 @@ extension UIImage {
 
 extension UIColor {
 
-    var coreImageColor: CIColor {
+    var ciColor: CIColor {
         return CIColor(color: self)
     }
     var rgb: (red: CGFloat, green: CGFloat, blue: CGFloat) {
-        let coreImageColor = self.coreImageColor
-        return (coreImageColor.red, coreImageColor.green, coreImageColor.blue)
+        let ciColor = self.ciColor
+        return (ciColor.red, ciColor.green, ciColor.blue)
     }
 
+    //returns image in LAB format in order to calculate distance between images on another level that's common to how humans compare them
+    //we will first convert RGB to XYZ and then XYZ to LAB
     var lab: (CIEL: CGFloat, CIEa: CGFloat, CIEb: CGFloat) {
         let rgbValues = self.rgb
-        var var_R = ( rgbValues.red)
-        var var_G = ( rgbValues.green)
-        var var_B = ( rgbValues.blue)
 
-        if var_R > 0.04045 { var_R = pow(( ( var_R + 0.055 ) / 1.055 ), 2.4) }
-        else{
-            var_R = var_R / 12.92
-        }
+        //RGB -> XYZ
+        var rgbRed = rgbValues.red
+        var rgbGreen = rgbValues.green
+        var rgbBlue = rgbValues.blue
 
-        if var_G > 0.04045 { var_G = pow(( ( var_G + 0.055 ) / 1.055 ), 2.4) }
-        else{
-            var_G = var_G / 12.92
-        }
-
-        if var_B > 0.04045 { var_B = pow(( ( var_B + 0.055 ) / 1.055 ), 2.4) }
-        else{
-            var_B = var_B / 12.92
-        }
-
-        var_R = var_R * 100
-        var_G = var_G * 100
-        var_B = var_B * 100
-
-        let X = var_R * 0.4124 + var_G * 0.3576 + var_B * 0.1805
-        let Y = var_R * 0.2126 + var_G * 0.7152 + var_B * 0.0722
-        let Z = var_R * 0.0193 + var_G * 0.1192 + var_B * 0.9505
-
-
-        //to lab
-        var var_X1 = X /  95.047
-        var var_Y1 = Y / 100.0
-        var var_Z1 = Z / 108.883
-
-        if var_X1 > 0.008856 {
-            var_X1 = pow(var_X1, ( 1/3 ))
+        if rgbRed > 0.04045 {
+            rgbRed = pow(((rgbRed + 0.055) / 1.055), 2.4)
         }
         else {
-            var_X1 = ( 7.787 * var_X1 ) + ( 16 / 116 )
+            rgbRed /= 12.92
         }
 
-
-        if var_Y1 > 0.008856 {
-            var_Y1 = pow(var_Y1, ( 1/3 ))
+        if rgbGreen > 0.04045 {
+            rgbGreen = pow(((rgbGreen + 0.055) / 1.055), 2.4)
         }
         else {
-            var_Y1 = ( 7.787 * var_Y1 ) + ( 16 / 116 )
+            rgbGreen /= 12.92
         }
 
-        if var_Z1 > 0.008856 {
-            var_Z1 = pow(var_Z1, ( 1/3 ))
+        if rgbBlue > 0.04045 {
+            rgbBlue = pow(((rgbBlue + 0.055) / 1.055), 2.4)
         }
         else {
-            var_Z1 = ( 7.787 * var_Z1 ) + ( 16 / 116 )
+            rgbBlue /= 12.92
         }
 
-        let CIEL = ( 116 * var_Y1 ) - 16
-        let CIEa = 500 * ( var_X1 - var_Y1 )
-        let CIEb = 200 * ( var_Y1 - var_Z1 )
+        rgbRed *= 100
+        rgbGreen *= 100
+        rgbBlue *= 100
+
+        let X = rgbRed * 0.4124 + rgbGreen * 0.3576 + rgbBlue * 0.1805
+        let Y = rgbRed * 0.2126 + rgbGreen * 0.7152 + rgbBlue * 0.0722
+        let Z = rgbRed * 0.0193 + rgbGreen * 0.1192 + rgbBlue * 0.9505
+
+
+        //XYZ -> LAB
+        var labX = X /  95.047
+        var labY = Y / 100.0
+        var labZ = Z / 108.883
+
+        if labX > 0.008856 {
+            labX = pow(labX, 1/3)
+        }
+        else {
+            labX = (7.787 * labX) + (16 / 116)
+        }
+
+        if labY > 0.008856 {
+            labY = pow(labY, 1/3)
+        }
+        else {
+            labY = (7.787 * labY) + (16 / 116)
+        }
+
+        if labZ > 0.008856 {
+            labZ = pow(labZ, 1/3)
+        }
+        else {
+            labZ = (7.787 * labZ) + (16 / 116)
+        }
+
+        let CIEL = (116 * labY) - 16
+        let CIEa = 500 * (labX - labY)
+        let CIEb = 200 * (labY - labZ)
 
         return (CIEL, CIEa, CIEb)
     }

@@ -342,7 +342,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="cVh-8d-9yU"/>
                     <connections>
-                        <outlet property="mainView" destination="S1G-sv-yCA" id="bi8-hR-WvM"/>
                         <outlet property="resultPreviewView" destination="xgh-kH-ghn" id="EA7-jd-N5Y"/>
                     </connections>
                 </viewController>
