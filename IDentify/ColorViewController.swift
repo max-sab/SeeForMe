@@ -16,7 +16,6 @@ class ColorViewController: ActionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
 
     @IBAction override func handleLongTapGesture(_ sender: UILongPressGestureRecognizer) {
@@ -28,8 +27,8 @@ class ColorViewController: ActionViewController {
                 }
                 let averageCentralColor = imageAverageColor
 
-                let res = self.colorController.findClosestColor(for: averageCentralColor, among: self.colorsCollection)
-                print(res)
+                let closestColor = self.colorController.findClosestColor(for: averageCentralColor, among: self.colorsCollection)
+                self.voiceController.read(text: "This color is close to \(closestColor)")
 
 //                try? PHPhotoLibrary.shared().performChangesAndWait {
 //                    PHAssetChangeRequest.creationRequestForAsset(from: image.crop())
