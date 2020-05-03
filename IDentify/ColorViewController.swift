@@ -23,11 +23,11 @@ class ColorViewController: ActionViewController {
     @IBAction override func handleLongTapGesture(_ sender: UILongPressGestureRecognizer) {
         if sender.state == .began {
             cameraController.captureImage {(image, error) in
-                guard let image = image else {
+                guard let imageAverageColor = image?.crop().averageColor else {
                     print(error ?? "Error occured while capturing image or converting it to CGImage type")
                     return
                 }
-                let averageCentralColor = self.colorController.findAverageColorFor(image: image.crop())
+                let averageCentralColor = imageAverageColor
 
                 //MARK: ONLY FOR DEV PURPOSES
                 self.mainView.backgroundColor = averageCentralColor
@@ -35,9 +35,9 @@ class ColorViewController: ActionViewController {
                 let res = self.colorController.findClosestColor(for: averageCentralColor, among: self.colorsCollection)
                 print(res)
 
-                try? PHPhotoLibrary.shared().performChangesAndWait {
-                    PHAssetChangeRequest.creationRequestForAsset(from: image.crop())
-                }
+//                try? PHPhotoLibrary.shared().performChangesAndWait {
+//                    PHAssetChangeRequest.creationRequestForAsset(from: image.crop())
+//                }
             }
         }
     }
