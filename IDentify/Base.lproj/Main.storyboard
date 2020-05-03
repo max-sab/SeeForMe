@@ -279,10 +279,10 @@
             </objects>
             <point key="canvasLocation" x="828" y="-155"/>
         </scene>
-        <!--Color View Controller-->
+        <!--Saved Texts View Controller-->
         <scene sceneID="W7J-Al-zsL">
             <objects>
-                <viewController id="Gqk-Qq-nD6" customClass="ColorViewController" customModule="SeeForMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Gqk-Qq-nD6" customClass="SavedTextsViewController" customModule="SeeForMe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="az7-P9-KX5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -328,10 +328,10 @@
             </objects>
             <point key="canvasLocation" x="-604" y="309"/>
         </scene>
-        <!--Color View Controller-->
+        <!--Saved Colors View Controller-->
         <scene sceneID="CRP-Zk-d2m">
             <objects>
-                <viewController id="2c1-Ai-qv0" customClass="ColorViewController" customModule="SeeForMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="2c1-Ai-qv0" customClass="SavedColorsViewController" customModule="SeeForMe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="y7w-xT-gmQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
