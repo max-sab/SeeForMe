@@ -9,98 +9,6 @@
     </dependencies>
     <scenes>
         <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="SeeForMe" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SeeForMe. Main" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JY2-VZ-39D">
-                                <rect key="frame" x="0.0" y="44" width="222" height="38"/>
-                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="29"/>
-                                <color key="textColor" red="0.066666666669999999" green="0.1764705882" blue="0.20392156859999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="pOO-dm-uRB">
-                                <rect key="frame" x="0.0" y="102" width="414" height="760"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jwB-lc-bqH">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="152"/>
-                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="20"/>
-                                        <state key="normal" title="Read text!">
-                                            <color key="titleColor" red="0.066666666669999999" green="0.1764705882" blue="0.20392156859999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="70"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8yv-hn-sKl">
-                                        <rect key="frame" x="0.0" y="152" width="414" height="152"/>
-                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="20"/>
-                                        <state key="normal" title="Show color!">
-                                            <color key="titleColor" red="0.066666666669999999" green="0.1764705882" blue="0.20392156859999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wHr-9j-yNb">
-                                        <rect key="frame" x="0.0" y="304" width="414" height="152"/>
-                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="20"/>
-                                        <state key="normal" title="Show saved colors">
-                                            <color key="titleColor" red="0.066666666669999999" green="0.1764705882" blue="0.20392156859999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="5"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XRz-9U-9OF">
-                                        <rect key="frame" x="0.0" y="456" width="414" height="152"/>
-                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="20"/>
-                                        <state key="normal" title="Read saved texts">
-                                            <color key="titleColor" red="0.066666666669999999" green="0.1764705882" blue="0.20392156859999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="5"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="at1-C1-hhM">
-                                        <rect key="frame" x="0.0" y="608" width="414" height="152"/>
-                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="20"/>
-                                        <state key="normal" title="Voice command">
-                                            <color key="titleColor" red="0.066666666669999999" green="0.1764705882" blue="0.20392156859999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="5"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </stackView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="pOO-dm-uRB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="7Ja-LT-uvP"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="pOO-dm-uRB" secondAttribute="trailing" id="NqE-Gd-eMA"/>
-                            <constraint firstItem="pOO-dm-uRB" firstAttribute="top" secondItem="JY2-VZ-39D" secondAttribute="bottom" constant="20" id="Q7Z-ke-iV9"/>
-                            <constraint firstItem="JY2-VZ-39D" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Sfi-VH-7vv"/>
-                            <constraint firstItem="JY2-VZ-39D" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="jUS-i0-Xxd"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="pOO-dm-uRB" secondAttribute="bottom" id="zyM-B8-yWW"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-365" y="-25"/>
-        </scene>
-        <!--View Controller-->
         <scene sceneID="ezl-Wh-IQ0">
             <objects>
                 <viewController id="ceH-ce-BGg" customClass="ViewController" customModule="SeeForMe" customModuleProvider="target" sceneMemberID="viewController">
@@ -182,6 +90,9 @@
                                                         <integer key="value" value="5"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <segue destination="Gqk-Qq-nD6" kind="presentation" modalPresentationStyle="fullScreen" id="0NF-XD-JSb"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fSS-1N-2J1">
                                                 <rect key="frame" x="212" y="116" width="192" height="130"/>
@@ -195,6 +106,9 @@
                                                         <integer key="value" value="5"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <segue destination="2c1-Ai-qv0" kind="presentation" modalPresentationStyle="fullScreen" id="9Ae-UJ-n0w"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -237,7 +151,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jxl-cd-QBu" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="514" y="-25"/>
+            <point key="canvasLocation" x="36" y="-413"/>
         </scene>
         <!--Vision View Controller-->
         <scene sceneID="PYf-ne-DSA">
@@ -300,7 +214,7 @@
                     </connections>
                 </screenEdgePanGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1309" y="-413"/>
+            <point key="canvasLocation" x="846" y="-790"/>
         </scene>
         <!--Color View Controller-->
         <scene sceneID="iL5-Mi-zDg">
@@ -363,7 +277,105 @@
                     </connections>
                 </screenEdgePanGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1309" y="242"/>
+            <point key="canvasLocation" x="828" y="-155"/>
+        </scene>
+        <!--Color View Controller-->
+        <scene sceneID="W7J-Al-zsL">
+            <objects>
+                <viewController id="Gqk-Qq-nD6" customClass="ColorViewController" customModule="SeeForMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="az7-P9-KX5">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SeeForMe. Saved texts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j7c-Cx-rMZ">
+                                <rect key="frame" x="0.0" y="44" width="305" height="38"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="29"/>
+                                <color key="textColor" red="0.066666666669999999" green="0.1764705882" blue="0.20392156859999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.80000000000000004" green="0.85882352939999995" blue="0.86274509799999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="j7c-Cx-rMZ" firstAttribute="top" secondItem="RR2-9Z-0zB" secondAttribute="top" id="LMJ-Gz-CCl"/>
+                            <constraint firstItem="j7c-Cx-rMZ" firstAttribute="leading" secondItem="RR2-9Z-0zB" secondAttribute="leading" id="Rfw-xV-Gma"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="RR2-9Z-0zB"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="0Dz-D2-VgQ" appends="YES" id="d2M-9Y-TAn"/>
+                            <outletCollection property="gestureRecognizers" destination="bLx-he-TfQ" appends="YES" id="iRr-cA-V4t"/>
+                        </connections>
+                    </view>
+                    <navigationItem key="navigationItem" id="qaM-LE-WH2"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JnI-Ch-ejF" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="0Dz-D2-VgQ">
+                    <connections>
+                        <action selector="handleTapGesture:" destination="Gqk-Qq-nD6" id="Fmw-Tk-GPL"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="1" id="bLx-he-TfQ">
+                    <connections>
+                        <action selector="handleLongTapGesture:" destination="Gqk-Qq-nD6" id="330-GG-4ud"/>
+                    </connections>
+                </pongPressGestureRecognizer>
+                <screenEdgePanGestureRecognizer minimumNumberOfTouches="1" id="w6y-PK-dwP">
+                    <rectEdge key="edges" left="YES"/>
+                    <connections>
+                        <action selector="handleScreenEdgePanGesture:" destination="Gqk-Qq-nD6" id="Oka-jw-Jec"/>
+                    </connections>
+                </screenEdgePanGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="-604" y="309"/>
+        </scene>
+        <!--Color View Controller-->
+        <scene sceneID="CRP-Zk-d2m">
+            <objects>
+                <viewController id="2c1-Ai-qv0" customClass="ColorViewController" customModule="SeeForMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="y7w-xT-gmQ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SeeForMe. Saved colors" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sva-5d-pfg">
+                                <rect key="frame" x="0.0" y="44" width="324" height="38"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="29"/>
+                                <color key="textColor" red="0.066666666669999999" green="0.1764705882" blue="0.20392156859999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.80000000000000004" green="0.85882352939999995" blue="0.86274509799999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="Sva-5d-pfg" firstAttribute="top" secondItem="DPi-G8-VMI" secondAttribute="top" id="QuE-Ua-YDC"/>
+                            <constraint firstItem="Sva-5d-pfg" firstAttribute="leading" secondItem="DPi-G8-VMI" secondAttribute="leading" id="jhg-bx-IaJ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="DPi-G8-VMI"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="UbJ-Jx-W0c" appends="YES" id="cZd-h9-Wl2"/>
+                            <outletCollection property="gestureRecognizers" destination="MXv-Bh-HRT" appends="YES" id="0a7-Gj-4cg"/>
+                        </connections>
+                    </view>
+                    <navigationItem key="navigationItem" id="Npi-HE-XL3"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ABg-Yp-fP6" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="UbJ-Jx-W0c">
+                    <connections>
+                        <action selector="handleTapGesture:" destination="2c1-Ai-qv0" id="cGh-Vb-mit"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="1" id="MXv-Bh-HRT">
+                    <connections>
+                        <action selector="handleLongTapGesture:" destination="2c1-Ai-qv0" id="lyR-04-DA5"/>
+                    </connections>
+                </pongPressGestureRecognizer>
+                <screenEdgePanGestureRecognizer minimumNumberOfTouches="1" id="Cuc-2w-N6v">
+                    <rectEdge key="edges" left="YES"/>
+                    <connections>
+                        <action selector="handleScreenEdgePanGesture:" destination="2c1-Ai-qv0" id="WRs-ae-1eM"/>
+                    </connections>
+                </screenEdgePanGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="114" y="309"/>
         </scene>
     </scenes>
     <resources>
