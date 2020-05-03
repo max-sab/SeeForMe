@@ -11,6 +11,7 @@ import Photos
 
 class ColorViewController: ActionViewController {
     let colorController = ColorController()
+    lazy var colorsCollection = DatabaseController.shared.getGeneralColors()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,12 +25,12 @@ class ColorViewController: ActionViewController {
                     print(error ?? "Error occured while capturing image or converting it to CGImage type")
                     return
                 }
+                let averageCentralColor = self.colorController.findAverageColorFor(image: image.crop())
+                self.colorController.findClosestColor(for: averageCentralColor, among: self.colorsCollection)
 
-                self.colorController.findAverageColorFor(image: image.crop())
-
-                try? PHPhotoLibrary.shared().performChangesAndWait {
-                    PHAssetChangeRequest.creationRequestForAsset(from: image.crop())
-                }
+//                try? PHPhotoLibrary.shared().performChangesAndWait {
+//                    PHAssetChangeRequest.creationRequestForAsset(from: image.crop())
+//                }
             }
         }
     }

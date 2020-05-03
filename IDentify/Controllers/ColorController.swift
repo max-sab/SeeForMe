@@ -10,7 +10,7 @@ import UIKit
 
 class ColorController {
 
-    func findAverageColorFor(image: UIImage) {
+    func findAverageColorFor(image: UIImage) -> UIColor{
         var bitmap = [UInt8](repeating: 0, count: 4)
         let context = CIContext()
         let inputImage: CIImage = image.ciImage ?? CoreImage.CIImage(cgImage: image.cgImage!)
@@ -23,7 +23,7 @@ class ColorController {
 
         // Render to bitmap.
         context.render(outputImage, toBitmap: &bitmap, rowBytes: 4, bounds: CGRect(x: 0, y: 0, width: 1, height: 1), format: CIFormat.RGBA8, colorSpace: CGColorSpaceCreateDeviceRGB())
-        let result = UIColor(red: CGFloat(bitmap[0]) / 255.0, green: CGFloat(bitmap[1]) / 255.0, blue: CGFloat(bitmap[2]) / 255.0, alpha: CGFloat(bitmap[3]) / 255.0)
+        return UIColor(red: CGFloat(bitmap[0]) / 255.0, green: CGFloat(bitmap[1]) / 255.0, blue: CGFloat(bitmap[2]) / 255.0, alpha: CGFloat(bitmap[3]) / 255.0)
 
     }
 
@@ -39,6 +39,10 @@ class ColorController {
         let distance = (2 + (redMeanLevel / 256) * (deltaRed * deltaRed) + (4 * (deltaGreen * deltaGreen)) + (2 + (255 - redMeanLevel) / 256) * (deltaBlue * deltaBlue)).squareRoot()
 
         return Double(distance)
+    }
+
+    func findClosestColor(for color: UIColor, among colorsCollection: [(CGFloat, CGFloat, CGFloat, String)]) {
+        let colorRGBA = color.rgba
     }
 
 
