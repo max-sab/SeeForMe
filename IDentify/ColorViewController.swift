@@ -10,8 +10,7 @@ import UIKit
 import Photos
 
 class ColorViewController: ActionViewController {
-    //MARK: ONLY FOR TESTING PURPOSES
-    @IBOutlet var mainView: UIView!
+
     let colorController = ColorController()
     lazy var colorsCollection = DatabaseController.shared.getGeneralColors()
 
@@ -23,14 +22,11 @@ class ColorViewController: ActionViewController {
     @IBAction override func handleLongTapGesture(_ sender: UILongPressGestureRecognizer) {
         if sender.state == .began {
             cameraController.captureImage {(image, error) in
-                guard let imageAverageColor = image?.crop().averageColor else {
+                guard let imageAverageColor = image?.crop()?.averageColor else {
                     print(error ?? "Error occured while capturing image or converting it to CGImage type")
                     return
                 }
                 let averageCentralColor = imageAverageColor
-
-                //MARK: ONLY FOR DEV PURPOSES
-                self.mainView.backgroundColor = averageCentralColor
 
                 let res = self.colorController.findClosestColor(for: averageCentralColor, among: self.colorsCollection)
                 print(res)
