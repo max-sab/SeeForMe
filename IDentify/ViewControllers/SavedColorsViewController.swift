@@ -44,7 +44,7 @@ class SavedColorsViewController: UIViewController, UITableViewDelegate, UITableV
 
         let dateString = dateFormatter.string(from: self.colorsCollection[indexPath.row].dateSaved ?? Date.distantFuture)
 
-        cell.textLabel?.text = "Record №\(indexPath.row + 1) | Date: \(dateString)"
+        cell.textLabel?.text = "Сolor №\(indexPath.row + 1) | Date: \(dateString)"
         return cell
     }
 
@@ -52,7 +52,7 @@ class SavedColorsViewController: UIViewController, UITableViewDelegate, UITableV
         dateFormatter.dateStyle = .short
         dateFormatter.timeStyle = .short
         if let date = self.colorsCollection[indexPath.row].dateSaved {
-            voiceController.read(text: "You saved this color on \(dateFormatter.string(from: date)). Your saved color is: \(self.colorsCollection[indexPath.row].name)")
+            voiceController.read(text: "You saved this color on \(dateFormatter.string(from: date)). Your saved color looks close to \(self.colorsCollection[indexPath.row].name). Red value is \(self.colorsCollection[indexPath.row].correspondingColor.rgb.red), green value is \(self.colorsCollection[indexPath.row].correspondingColor.rgb.green), and blue value is \(self.colorsCollection[indexPath.row].correspondingColor.rgb.blue)")
             } else {
             voiceController.read(text: "Your saved color is: \(self.colorsCollection[indexPath.row].name)")
         }
