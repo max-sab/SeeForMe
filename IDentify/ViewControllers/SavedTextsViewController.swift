@@ -50,7 +50,7 @@ class SavedTextsViewController: UIViewController, UITableViewDelegate, UITableVi
         dateFormatter.dateStyle = .short
         dateFormatter.timeStyle = .short
 
-        voiceController.read(text: "Reading text saved on \(dateFormatter.string(from: self.textsCollection[indexPath.row].dateSaved)). Content is: \(self.textsCollection[indexPath.row].content)")
+        voiceController.read(text: "Reading text saved on \(dateFormatter.string(from: self.textsCollection[indexPath.row].dateSaved)). Content is: \(self.textsCollection[indexPath.row].content)", completion: nil)
     }
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
