@@ -15,6 +15,7 @@ class DatabaseController {
 
     let connection: Connection?
     static let shared = DatabaseController()
+    let formatter = DateFormatter()
 
     //Texts
     let savedTextsTable = Table("Texts")
@@ -33,24 +34,23 @@ class DatabaseController {
 
     private init() {
         do {
-            //            let fileManager = FileManager()
-            //            let path = Bundle.main.path(forResource: "SFMDB", ofType: ".db")
-            //            do {
-            //                if FileManager.default.fileExists(atPath: "\(dbPath!)/SFMDB.db") {
-            //                    try! FileManager.default.removeItem(atPath: "\(dbPath!)/SFMDB.db")
-            //                }
-            //                try fileManager.copyItem(atPath: path!, toPath: "\(dbPath!)/SFMDB.db")
-            //            }catch let error as NSError {
-            //                print("error occurred, here are the details:\n \(error)")
-            //            }
-
-            let dbPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first
-            if let dbPath = dbPath {
-                self.connection =  try Connection("\(dbPath)/SFMDB.db")
-            } else {
-                print("err")
+            let dbPathInit = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first
+            guard let dbPath = dbPathInit else {
                 connection = nil
+                return
             }
+            let fileManager = FileManager()
+
+            let initialPath = Bundle.main.path(forResource: "SFMDB", ofType: ".db")
+            do {
+                if FileManager.default.fileExists(atPath: "\(dbPath)/SFMDB.db") {
+                    try fileManager.removeItem(atPath: "\(dbPath)/SFMDB.db")
+                    try fileManager.copyItem(atPath: initialPath!, toPath: "\(dbPath)/SFMDB.db")
+                }
+            } catch let error as NSError {
+                print("error occurred, here are the details:\n \(error)")
+            }
+            self.connection =  try Connection("\(dbPath)/SFMDB.db")
 
         } catch {
             connection = nil
@@ -91,7 +91,7 @@ class DatabaseController {
         var texts = [Text]()
 
         let formatter = DateFormatter()
-        formatter.dateFormat = "HH:mm, d MMM y"
+        formatter.dateFormat = "MM.dd.yy, HH:mm"
 
         //Kyiv not Kiev :(
         formatter.timeZone = .some(TimeZone(identifier: "Europe/Kiev")!)
@@ -120,8 +120,8 @@ class DatabaseController {
 
         var colors = [Color]()
 
-        let formatter = DateFormatter()
-        formatter.dateFormat = "HH:mm, d MMM y"
+
+        formatter.dateFormat = "MM.dd.yy, HH:mm"
         //Kyiv not Kiev :(
         formatter.timeZone = .some(TimeZone(identifier: "Europe/Kiev")!)
 
@@ -147,14 +147,48 @@ class DatabaseController {
         guard let connection = connection else {
             fatalError()
         }
-
-        let insert = savedTextsTable.insert(content <- text, textDateSaved <- Ca)
+        let currentDateTime = Date()
+        formatter.dateStyle = .short
+        formatter.timeStyle = .short
+        formatter.string(from: currentDateTime)
+        let insert = savedTextsTable.insert(content <- text, textDateSaved <- formatter.string(from: currentDateTime))
         do {
             try connection.run(insert)
         } catch {
             print(error)
         }
     }
+
+    func saveNew(color: Color) {
+        guard let connection = connection else {
+            fatalError()
+        }
+        let currentDateTime = Date()
+        formatter.dateStyle = .short
+        formatter.timeStyle = .short
+        formatter.string(from: currentDateTime)
+        let insert = savedColorsTable.insert(name <- color.name, red <- Int(color.correspondingColor.rgb.red) * 255, green <- Int(color.correspondingColor.rgb.green) * 255, blue <- Int(color.correspondingColor.rgb.blue) * 255,  colorDateSaved <- formatter.string(from: currentDateTime))
+        do {
+            try connection.run(insert)
+        } catch {
+            print(error)
+        }
+    }
+
+    //    func saveNew(text: String) {
+    //        guard let connection = connection else {
+    //            fatalError()
+    //        }
+    //        let currentDateTime = Date()
+    //        formatter.dateStyle = .short
+    //        formatter.string(from: currentDateTime)
+    //        let insert = savedTextsTable.insert(content <- text, textDateSaved <- formatter.string(from: currentDateTime))
+    //        do {
+    //            try connection.run(insert)
+    //        } catch {
+    //            print(error)
+    //        }
+    //    }
 
 
     func removeSavedText(with textId: Int) {
