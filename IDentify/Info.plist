@@ -2,8 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>TEST ACCESS</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Microphone recognition is required in order to listen to your voice commands</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>Speech recognition is required  in order to use voice commands</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Camera access is required to read texts</string>
 	<key>CFBundleDevelopmentRegion</key>

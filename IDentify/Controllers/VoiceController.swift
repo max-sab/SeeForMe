@@ -7,6 +7,7 @@
 //
 
 import AVFoundation
+import Speech
 
 struct VoiceController {
     // 0.5 is default utteranceRate defined by Apple

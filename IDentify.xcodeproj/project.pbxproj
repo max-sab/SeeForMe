@@ -12,7 +12,7 @@
 		50881681245DD9510051FBC5 /* ColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50881680245DD9510051FBC5 /* ColorViewController.swift */; };
 		50881683245DE1CF0051FBC5 /* ActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50881682245DE1CF0051FBC5 /* ActionViewController.swift */; };
 		509A6AB3245EEC6C00AFC486 /* ColorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509A6AB2245EEC6C00AFC486 /* ColorController.swift */; };
-		509A6AB5245EED0300AFC486 /* ImageUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509A6AB4245EED0300AFC486 /* ImageUtils.swift */; };
+		509A6AB5245EED0300AFC486 /* UIUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509A6AB4245EED0300AFC486 /* UIUtils.swift */; };
 		509A6AB8245EFAAB00AFC486 /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = 509A6AB7245EFAAB00AFC486 /* SQLite */; };
 		509A6ABA245EFADF00AFC486 /* DatabaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509A6AB9245EFADF00AFC486 /* DatabaseController.swift */; };
 		509A6ABC245F1A8000AFC486 /* SFMDB.db in Resources */ = {isa = PBXBuildFile; fileRef = 509A6ABB245F068E00AFC486 /* SFMDB.db */; };
@@ -38,7 +38,7 @@
 		50881680245DD9510051FBC5 /* ColorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorViewController.swift; sourceTree = "<group>"; };
 		50881682245DE1CF0051FBC5 /* ActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionViewController.swift; sourceTree = "<group>"; };
 		509A6AB2245EEC6C00AFC486 /* ColorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorController.swift; sourceTree = "<group>"; };
-		509A6AB4245EED0300AFC486 /* ImageUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUtils.swift; sourceTree = "<group>"; };
+		509A6AB4245EED0300AFC486 /* UIUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIUtils.swift; sourceTree = "<group>"; };
 		509A6AB9245EFADF00AFC486 /* DatabaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseController.swift; sourceTree = "<group>"; };
 		509A6ABB245F068E00AFC486 /* SFMDB.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = SFMDB.db; sourceTree = "<group>"; };
 		509A6ABD245F5EEF00AFC486 /* SavedTextsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedTextsViewController.swift; sourceTree = "<group>"; };
@@ -144,7 +144,7 @@
 				50DD60632454B784004602A9 /* Assets.xcassets */,
 				50DD60652454B784004602A9 /* LaunchScreen.storyboard */,
 				50DD60682454B784004602A9 /* Info.plist */,
-				509A6AB4245EED0300AFC486 /* ImageUtils.swift */,
+				509A6AB4245EED0300AFC486 /* UIUtils.swift */,
 			);
 			path = IDentify;
 			sourceTree = "<group>";
@@ -244,7 +244,7 @@
 				50D613D6245C6C3A005561DB /* CameraController.swift in Sources */,
 				5088167F245DAFC10051FBC5 /* VisionController.swift in Sources */,
 				50DA733D24608F89004DA9B4 /* MainPageViewController.swift in Sources */,
-				509A6AB5245EED0300AFC486 /* ImageUtils.swift in Sources */,
+				509A6AB5245EED0300AFC486 /* UIUtils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
