@@ -52,9 +52,9 @@ class SavedColorsViewController: UIViewController, UITableViewDelegate, UITableV
         dateFormatter.dateStyle = .short
         dateFormatter.timeStyle = .short
         if let date = self.colorsCollection[indexPath.row].dateSaved {
-            voiceController.read(text: "You saved this color on \(dateFormatter.string(from: date)). Your saved color is: \(self.colorsCollection[indexPath.row].name)", completion: nil)
+            voiceController.read(text: "You saved this color on \(dateFormatter.string(from: date)). Your saved color is: \(self.colorsCollection[indexPath.row].name)")
             } else {
-            voiceController.read(text: "Your saved color is: \(self.colorsCollection[indexPath.row].name)", completion: nil)
+            voiceController.read(text: "Your saved color is: \(self.colorsCollection[indexPath.row].name)")
         }
     }
 

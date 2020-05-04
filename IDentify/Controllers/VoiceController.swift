@@ -13,17 +13,13 @@ struct VoiceController {
     private var utteranceRate: Float = 0.4
     private let synthesizer = AVSpeechSynthesizer()
 
-    func read(text input: String, completion: (() -> Void)?) {
+    func read(text input: String) {
         //print(input)
         synthesizer.stopSpeaking(at: AVSpeechBoundary.immediate)
         let utterance = AVSpeechUtterance(string: input)
         utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
         utterance.rate = utteranceRate
         synthesizer.speak(utterance)
-
-        if completion != nil {
-            completion!()
-        }
     }
 
     func toggleSpeechSynthesizerState() {

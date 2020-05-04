@@ -18,6 +18,10 @@ class ColorViewController: ActionViewController {
         super.viewDidLoad()
     }
 
+    @IBAction func handleTapTwiceGesture(_ sender: UITapGestureRecognizer) {
+
+    }
+
     @IBAction override func handleLongTapGesture(_ sender: UILongPressGestureRecognizer) {
         if sender.state == .began {
             cameraController.captureImage {(image, error) in
@@ -28,9 +32,7 @@ class ColorViewController: ActionViewController {
                 let averageCentralColor = imageAverageColor
 
                 let closestColor = self.colorController.findClosestColor(for: averageCentralColor, among: self.colorsCollection)
-                self.voiceController.read(text: "This color is close to \(closestColor)", completion: {
-                    self.voiceController.read(text: "Do you want to save this? Tap twice if yes", completion: nil)
-                })
+                self.voiceController.read(text: "Be sure to tap twice if you want to save the result. This color is close to \(closestColor)")
 
 //                try? PHPhotoLibrary.shared().performChangesAndWait {
 //                    PHAssetChangeRequest.creationRequestForAsset(from: image.crop())

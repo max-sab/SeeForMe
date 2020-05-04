@@ -143,6 +143,19 @@ class DatabaseController {
         return colors
     }
 
+    func saveNew(text: String) {
+        guard let connection = connection else {
+            fatalError()
+        }
+
+        let insert = savedTextsTable.insert(content <- text, textDateSaved <- Ca)
+        do {
+            try connection.run(insert)
+        } catch {
+            print(error)
+        }
+    }
+
 
     func removeSavedText(with textId: Int) {
         guard let connection = connection else {

@@ -13,6 +13,12 @@ import AVFoundation
 
 class VisionViewController: ActionViewController {
 
+    var currentText = ""
+
+    @IBAction func handleTapTwiceGesture(_ sender: UITapGestureRecognizer) {
+        DatabaseController.shared.saveNew(text: currentText)
+    }
+
     @IBAction override func handleLongTapGesture(_ sender: UILongPressGestureRecognizer) {
         if sender.state == .began {
             cameraController.captureImage {(image, error) in
@@ -27,10 +33,8 @@ class VisionViewController: ActionViewController {
                         return
                     }
 
-                    self.voiceController.read(text: text, completion: {
-                         self.voiceController.read(text: "Do you want to save this? Tap twice if yes", completion: nil)
-                    })
-
+                    self.voiceController.read(text: "Be sure to tap twice if you want to save the result. Recognized text is: \(text)")
+                    self.currentText = text
                 })
 
                 return

@@ -198,6 +198,8 @@
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="a91-W2-EKJ" appends="YES" id="Cki-QK-GcV"/>
                             <outletCollection property="gestureRecognizers" destination="QuF-ap-4hp" appends="YES" id="Jrz-PX-Ibs"/>
+                            <outletCollection property="gestureRecognizers" destination="ePN-it-GrH" appends="YES" id="wMQ-pd-Idf"/>
+                            <outletCollection property="gestureRecognizers" destination="mta-bF-B9E" appends="YES" id="hrE-Xs-hD8"/>
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" id="SqH-ta-QWh"/>
@@ -216,12 +218,18 @@
                         <action selector="handleLongTapGesture:" destination="D6c-dh-RAf" id="dFu-de-ph1"/>
                     </connections>
                 </pongPressGestureRecognizer>
+                <tapGestureRecognizer numberOfTapsRequired="2" id="ePN-it-GrH"/>
                 <screenEdgePanGestureRecognizer minimumNumberOfTouches="1" id="KuF-wa-bLC">
                     <rectEdge key="edges" left="YES"/>
                     <connections>
                         <action selector="handleScreenEdgePanGesture:" destination="D6c-dh-RAf" id="ptM-Vo-lD9"/>
                     </connections>
                 </screenEdgePanGestureRecognizer>
+                <tapGestureRecognizer numberOfTapsRequired="2" id="mta-bF-B9E">
+                    <connections>
+                        <action selector="handleTapTwiceGesture:" destination="D6c-dh-RAf" id="GpR-SH-XAN"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="846" y="-790"/>
         </scene>
@@ -269,6 +277,7 @@
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="wxr-BX-a4b" appends="YES" id="fl9-yQ-K85"/>
                             <outletCollection property="gestureRecognizers" destination="Dsg-DX-b4d" appends="YES" id="uZ5-kc-QNK"/>
+                            <outletCollection property="gestureRecognizers" destination="sZ2-D0-N0N" appends="YES" id="lr0-B3-XHV"/>
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" id="cVh-8d-9yU"/>
@@ -293,6 +302,11 @@
                         <action selector="handleScreenEdgePanGesture:" destination="y8b-bb-vIy" id="oXf-td-XGs"/>
                     </connections>
                 </screenEdgePanGestureRecognizer>
+                <tapGestureRecognizer numberOfTapsRequired="2" id="sZ2-D0-N0N">
+                    <connections>
+                        <action selector="handleTapTwiceGesture:" destination="y8b-bb-vIy" id="SGD-5h-pKu"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="828" y="-155"/>
         </scene>
