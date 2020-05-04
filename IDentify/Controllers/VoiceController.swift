@@ -10,7 +10,7 @@ import AVFoundation
 
 struct VoiceController {
     // 0.5 is default utteranceRate defined by Apple
-    private var utteranceRate: Float = 0.5
+    private var utteranceRate: Float = 0.3
     private let synthesizer = AVSpeechSynthesizer()
 
     func read(text input: String) {

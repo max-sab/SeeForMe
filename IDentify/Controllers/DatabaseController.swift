@@ -60,13 +60,15 @@ class DatabaseController {
         }
 
         let savedTextsTable = Table("Texts")
-        let id = Expression<Int>("id")
         let content = Expression<String>("content")
         let dateSaved = Expression<String>("date")
         var texts = [SavedText]()
 
         let formatter = DateFormatter()
-        formatter.dateFormat = "dd-MM-yyyy HH:mm"
+        formatter.dateFormat = "HH:mm, d MMM y"
+
+        //Kyiv not Kiev :(
+        formatter.timeZone = .some(TimeZone(identifier: "Europe/Kiev")!)
 
         do {
             print("Before connection")
@@ -76,7 +78,7 @@ class DatabaseController {
                     return []
                 }
                 print("\(date)")
-                texts.append(SavedText(id: text[id], content: text[content], dateSaved: Date.distantFuture))
+                texts.append(SavedText(content: text[content], dateSaved: date))
             }
         } catch {
             print(error)
