@@ -15,6 +15,14 @@ class DatabaseController {
     let connection: Connection?
     static let shared = DatabaseController()
 
+    //Texts
+    let savedTextsTable = Table("Texts")
+    let id = Expression<Int>("id")
+    let content = Expression<String>("content")
+    let dateSaved = Expression<String>("date")
+
+    //Colors
+
     private init() {
         do {
             let path = Bundle.main.path(forResource: "SFMDB", ofType: "db")
@@ -59,9 +67,6 @@ class DatabaseController {
             fatalError()
         }
 
-        let savedTextsTable = Table("Texts")
-        let content = Expression<String>("content")
-        let dateSaved = Expression<String>("date")
         var texts = [SavedText]()
 
         let formatter = DateFormatter()
@@ -78,12 +83,31 @@ class DatabaseController {
                     return []
                 }
                 print("\(date)")
-                texts.append(SavedText(content: text[content], dateSaved: date))
+                texts.append(SavedText(id: text[id], content: text[content], dateSaved: date))
             }
         } catch {
             print(error)
         }
 
         return texts
+    }
+
+    func removeSavedText(with textId: Int) {
+        guard let connection = connection else {
+            fatalError()
+        }
+
+        let savedTextsTable = Table("Texts")
+        let textToDelete = savedTextsTable.filter(id == textId)
+        
+        do {
+            try connection.run(textToDelete.delete())
+        } catch {
+            print(error)
+        }
+    }
+
+    func removeSavedColor(with id: Int) {
+
     }
 }

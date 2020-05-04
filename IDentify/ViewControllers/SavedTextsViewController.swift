@@ -44,7 +44,7 @@ class SavedTextsViewController: UIViewController, UITableViewDelegate, UITableVi
         cell.textLabel?.text = "Record №\(indexPath.row + 1) | Date: \(dateString)"
         return cell
     }
-    // method to run when table view cell is tapped
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         dateFormatter.dateStyle = .short
         dateFormatter.timeStyle = .short
@@ -52,19 +52,12 @@ class SavedTextsViewController: UIViewController, UITableViewDelegate, UITableVi
         voiceController.read(text: "Reading text saved on \(dateFormatter.string(from: self.textsCollection[indexPath.row].dateSaved)). Content is: \(self.textsCollection[indexPath.row].content)")
     }
 
-    // this method handles row deletion
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
 
         if editingStyle == .delete {
-
-            // remove the item from the data model
+            DatabaseController.shared.removeSavedText(with: textsCollection[indexPath.row].id)
             textsCollection.remove(at: indexPath.row)
-
-            // delete the table view row
             tableView.deleteRows(at: [indexPath], with: .fade)
-
-        } else if editingStyle == .insert {
-            // Not used in our example, but if you were adding a new row, this is where you would do it.
         }
     }
 

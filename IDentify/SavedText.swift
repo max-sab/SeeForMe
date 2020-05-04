@@ -9,6 +9,7 @@
 import Foundation
 
 struct SavedText {
+    let id: Int
     let content: String
     let dateSaved: Date
 }
