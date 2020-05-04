@@ -11,7 +11,7 @@
         <!--Manage Page View Controller-->
         <scene sceneID="HZZ-pL-xMA">
             <objects>
-                <pageViewController storyboardIdentifier="PageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" pageSpacing="2" navigationOrientation="vertical" spineLocation="min" id="zDd-Z2-iPI" customClass="ManagePageViewController" customModule="SeeForMe" customModuleProvider="target" sceneMemberID="viewController"/>
+                <pageViewController storyboardIdentifier="PageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" pageSpacing="2" navigationOrientation="vertical" spineLocation="none" id="zDd-Z2-iPI" customClass="ManagePageViewController" customModule="SeeForMe" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KPB-d3-btn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-880" y="-448"/>
@@ -165,7 +165,7 @@
         <!--Vision View Controller-->
         <scene sceneID="PYf-ne-DSA">
             <objects>
-                <viewController id="D6c-dh-RAf" customClass="VisionViewController" customModule="SeeForMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="VisionViewController" id="D6c-dh-RAf" customClass="VisionViewController" customModule="SeeForMe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WDT-Jb-KPB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -244,7 +244,7 @@
         <!--Color View Controller-->
         <scene sceneID="iL5-Mi-zDg">
             <objects>
-                <viewController id="y8b-bb-vIy" customClass="ColorViewController" customModule="SeeForMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ColorViewController" id="y8b-bb-vIy" customClass="ColorViewController" customModule="SeeForMe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="S1G-sv-yCA">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -321,7 +321,7 @@
         <!--Saved Texts View Controller-->
         <scene sceneID="W7J-Al-zsL">
             <objects>
-                <viewController id="Gqk-Qq-nD6" customClass="SavedTextsViewController" customModule="SeeForMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SavedTextsViewController" id="Gqk-Qq-nD6" customClass="SavedTextsViewController" customModule="SeeForMe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="az7-P9-KX5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -377,7 +377,7 @@
         <!--Saved Colors View Controller-->
         <scene sceneID="25A-sb-Bkb">
             <objects>
-                <viewController id="Irg-pL-YyW" customClass="SavedColorsViewController" customModule="SeeForMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SavedColorsViewController" id="Irg-pL-YyW" customClass="SavedColorsViewController" customModule="SeeForMe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ytz-gg-w1y">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -456,6 +456,9 @@
                                         <integer key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="actionButtonPressed:" destination="hM5-bP-30a" eventType="touchUpInside" id="F6K-n5-rZ5"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.80000000000000004" green="0.85882352939999995" blue="0.86274509799999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
