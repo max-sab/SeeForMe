@@ -163,7 +163,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SeeForMe. What's written?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WLf-Cy-K9W">
-                                <rect key="frame" x="0.0" y="0.0" width="357" height="38"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="38"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="29"/>
                                 <color key="textColor" red="0.066666666669999999" green="0.1764705882" blue="0.20392156859999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -190,7 +190,7 @@
                             <constraint firstItem="EuF-e6-c7H" firstAttribute="top" secondItem="WLf-Cy-K9W" secondAttribute="bottom" id="AvK-z7-NXJ"/>
                             <constraint firstItem="WLf-Cy-K9W" firstAttribute="leading" secondItem="Wzp-40-r9K" secondAttribute="leading" id="RiS-Gs-g1V"/>
                             <constraint firstItem="Wzp-40-r9K" firstAttribute="bottom" secondItem="EuF-e6-c7H" secondAttribute="bottom" id="dAK-fO-w5I"/>
-                            <constraint firstItem="Wzp-40-r9K" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="WLf-Cy-K9W" secondAttribute="trailing" constant="57" id="dhP-ZB-YkX"/>
+                            <constraint firstItem="Wzp-40-r9K" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="WLf-Cy-K9W" secondAttribute="trailing" id="dhP-ZB-YkX"/>
                             <constraint firstItem="EuF-e6-c7H" firstAttribute="leading" secondItem="Wzp-40-r9K" secondAttribute="leading" id="inv-AZ-C73"/>
                             <constraint firstItem="Wzp-40-r9K" firstAttribute="trailing" secondItem="EuF-e6-c7H" secondAttribute="trailing" id="jYz-Ln-Big"/>
                         </constraints>
@@ -242,7 +242,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SeeForMe. What color?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="69S-z2-Y1G">
-                                <rect key="frame" x="0.0" y="0.0" width="316" height="38"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="38"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="29"/>
                                 <color key="textColor" red="0.066666666669999999" green="0.1764705882" blue="0.20392156859999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -269,7 +269,7 @@
                             <constraint firstItem="xgh-kH-ghn" firstAttribute="top" secondItem="69S-z2-Y1G" secondAttribute="bottom" id="MDB-qn-pAd"/>
                             <constraint firstItem="5Sj-hn-9dG" firstAttribute="trailing" secondItem="xgh-kH-ghn" secondAttribute="trailing" id="NTW-VH-yrB"/>
                             <constraint firstItem="5Sj-hn-9dG" firstAttribute="bottom" secondItem="xgh-kH-ghn" secondAttribute="bottom" id="Tnn-1g-Q74"/>
-                            <constraint firstItem="5Sj-hn-9dG" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="69S-z2-Y1G" secondAttribute="trailing" constant="98" id="cs5-gu-XQC"/>
+                            <constraint firstItem="5Sj-hn-9dG" firstAttribute="trailing" secondItem="69S-z2-Y1G" secondAttribute="trailing" id="cs5-gu-XQC"/>
                             <constraint firstItem="xgh-kH-ghn" firstAttribute="leading" secondItem="5Sj-hn-9dG" secondAttribute="leading" id="jNo-FO-7mw"/>
                             <constraint firstItem="69S-z2-Y1G" firstAttribute="top" secondItem="5Sj-hn-9dG" secondAttribute="top" id="s89-m5-hhE"/>
                         </constraints>
@@ -319,7 +319,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SeeForMe. Saved texts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j7c-Cx-rMZ">
-                                <rect key="frame" x="0.0" y="0.0" width="305" height="38"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="38"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="29"/>
                                 <color key="textColor" red="0.066666666669999999" green="0.1764705882" blue="0.20392156859999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -342,7 +342,7 @@
                             <constraint firstItem="j7c-Cx-rMZ" firstAttribute="top" secondItem="RR2-9Z-0zB" secondAttribute="top" id="LMJ-Gz-CCl"/>
                             <constraint firstItem="j7c-Cx-rMZ" firstAttribute="leading" secondItem="RR2-9Z-0zB" secondAttribute="leading" id="Rfw-xV-Gma"/>
                             <constraint firstItem="RR2-9Z-0zB" firstAttribute="bottom" secondItem="KlC-uH-mmd" secondAttribute="bottom" id="Tzg-pU-aJ1"/>
-                            <constraint firstItem="RR2-9Z-0zB" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="j7c-Cx-rMZ" secondAttribute="trailing" constant="109" id="Z2R-oG-2lG"/>
+                            <constraint firstItem="RR2-9Z-0zB" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="j7c-Cx-rMZ" secondAttribute="trailing" id="Z2R-oG-2lG"/>
                             <constraint firstItem="RR2-9Z-0zB" firstAttribute="trailing" secondItem="KlC-uH-mmd" secondAttribute="trailing" id="jtP-ld-dSU"/>
                             <constraint firstItem="KlC-uH-mmd" firstAttribute="top" secondItem="j7c-Cx-rMZ" secondAttribute="bottom" id="pU6-uR-5h7"/>
                         </constraints>
@@ -395,7 +395,7 @@
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="yQz-16-lRu" firstAttribute="trailing" secondItem="KG9-GR-ogV" secondAttribute="trailing" id="2dP-MT-QMs"/>
-                            <constraint firstItem="yQz-16-lRu" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="F9F-o5-tzl" secondAttribute="trailing" constant="75" id="7ob-FJ-mFy"/>
+                            <constraint firstItem="yQz-16-lRu" firstAttribute="trailing" secondItem="F9F-o5-tzl" secondAttribute="trailing" id="7ob-FJ-mFy"/>
                             <constraint firstItem="KG9-GR-ogV" firstAttribute="top" secondItem="F9F-o5-tzl" secondAttribute="bottom" id="Ai3-oP-bfu"/>
                             <constraint firstItem="F9F-o5-tzl" firstAttribute="leading" secondItem="yQz-16-lRu" secondAttribute="leading" id="K6R-Vl-V7L"/>
                             <constraint firstItem="F9F-o5-tzl" firstAttribute="top" secondItem="yQz-16-lRu" secondAttribute="top" id="KhB-kz-2X9"/>
