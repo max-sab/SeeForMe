@@ -25,14 +25,25 @@ class DatabaseController {
 
     private init() {
         do {
-            let path = Bundle.main.path(forResource: "SFMDB", ofType: "db")
-
-            if let path = path {
-            self.connection = try Connection(path)
+//            let fileManager = FileManager()
+//            let path = Bundle.main.path(forResource: "SFMDB", ofType: ".db")
+//            do {
+//                if FileManager.default.fileExists(atPath: "\(dbPath!)/SFMDB.db") {
+//                    try! FileManager.default.removeItem(atPath: "\(dbPath!)/SFMDB.db")
+//                }
+//                try fileManager.copyItem(atPath: path!, toPath: "\(dbPath!)/SFMDB.db")
+//            }catch let error as NSError {
+//                print("error occurred, here are the details:\n \(error)")
+//            }
+            
+            let dbPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first
+            if let dbPath = dbPath {
+            self.connection =  try Connection("\(dbPath)/SFMDB.db")
             } else {
                 print("err")
                 connection = nil
             }
+
         } catch {
             connection = nil
             print(error)
@@ -105,6 +116,8 @@ class DatabaseController {
         } catch {
             print(error)
         }
+
+        getSavedTexts()
     }
 
     func removeSavedColor(with id: Int) {

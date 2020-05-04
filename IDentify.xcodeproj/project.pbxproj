@@ -98,6 +98,13 @@
 			path = Database;
 			sourceTree = "<group>";
 		};
+		50DC337424601C8F004E6BFA /* Library */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
 		50DD604E2454B77D004602A9 = {
 			isa = PBXGroup;
 			children = (
@@ -118,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				509A6AC0245F5F1400AFC486 /* Database */,
+				50DC337424601C8F004E6BFA /* Library */,
 				509A6ABF245F5EF400AFC486 /* ViewControllers */,
 				5088167D245D9F250051FBC5 /* Controllers */,
 				50DD605A2454B77D004602A9 /* AppDelegate.swift */,
