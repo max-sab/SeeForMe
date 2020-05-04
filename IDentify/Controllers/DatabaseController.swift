@@ -166,7 +166,7 @@ class DatabaseController {
         formatter.dateStyle = .short
         formatter.timeStyle = .short
         formatter.string(from: currentDateTime)
-        let insert = savedColorsTable.insert(name <- color.name, red <- Int(color.correspondingColor.rgb.red) * 255, green <- Int(color.correspondingColor.rgb.green) * 255, blue <- Int(color.correspondingColor.rgb.blue) * 255,  colorDateSaved <- formatter.string(from: currentDateTime))
+        let insert = savedColorsTable.insert(name <- color.name, red <- Int(color.correspondingColor.rgb.red * 255.0), green <- Int(color.correspondingColor.rgb.green * 255), blue <- Int(color.correspondingColor.rgb.blue * 255),  colorDateSaved <- formatter.string(from: currentDateTime))
         do {
             try connection.run(insert)
         } catch {
