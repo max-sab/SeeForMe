@@ -9,8 +9,9 @@
 import UIKit
 
 class SavedTextsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    private let cellReuseIdentifier = "cell"
+
     @IBOutlet weak var savedTextsTableView: UITableView!
+    private let cellReuseIdentifier = "cell"
     private let voiceController = VoiceController()
     private var textsCollection = DatabaseController.shared.getSavedTexts()
     private let dateFormatter = DateFormatter()

@@ -35,7 +35,7 @@ class DatabaseController {
 //            }catch let error as NSError {
 //                print("error occurred, here are the details:\n \(error)")
 //            }
-            
+
             let dbPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first
             if let dbPath = dbPath {
             self.connection =  try Connection("\(dbPath)/SFMDB.db")
@@ -73,12 +73,12 @@ class DatabaseController {
         return generalColors
     }
 
-    func getSavedTexts() -> [SavedText]{
+    func getSavedTexts() -> [Text]{
         guard let connection = connection else {
             fatalError()
         }
 
-        var texts = [SavedText]()
+        var texts = [Text]()
 
         let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm, d MMM y"
@@ -94,7 +94,7 @@ class DatabaseController {
                     return []
                 }
                 print("\(date)")
-                texts.append(SavedText(id: text[id], content: text[content], dateSaved: date))
+                texts.append(Text(id: text[id], content: text[content], dateSaved: date))
             }
         } catch {
             print(error)
@@ -102,6 +102,37 @@ class DatabaseController {
 
         return texts
     }
+
+    func getSavedColors() -> [Color]{
+        guard let connection = connection else {
+            fatalError()
+        }
+
+        var texts = [Text]()
+
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm, d MMM y"
+
+        //Kyiv not Kiev :(
+        formatter.timeZone = .some(TimeZone(identifier: "Europe/Kiev")!)
+
+        do {
+            print("Before connection")
+            for text in try connection.prepare(savedTextsTable) {
+                guard let date = formatter.date(from: text[dateSaved]) else {
+                    print("Date incorrect")
+                    return []
+                }
+                print("\(date)")
+                texts.append(Text(id: text[id], content: text[content], dateSaved: date))
+            }
+        } catch {
+            print(error)
+        }
+
+        return texts
+    }
+
 
     func removeSavedText(with textId: Int) {
         guard let connection = connection else {

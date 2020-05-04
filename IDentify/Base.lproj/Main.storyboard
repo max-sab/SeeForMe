@@ -107,7 +107,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <segue destination="2c1-Ai-qv0" kind="presentation" modalPresentationStyle="fullScreen" id="9Ae-UJ-n0w"/>
+                                                    <segue destination="Irg-pL-YyW" kind="presentation" modalPresentationStyle="fullScreen" id="kbp-BP-DQs"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -307,10 +307,14 @@
                             <constraint firstItem="j7c-Cx-rMZ" firstAttribute="top" secondItem="RR2-9Z-0zB" secondAttribute="top" id="LMJ-Gz-CCl"/>
                             <constraint firstItem="j7c-Cx-rMZ" firstAttribute="leading" secondItem="RR2-9Z-0zB" secondAttribute="leading" id="Rfw-xV-Gma"/>
                             <constraint firstItem="RR2-9Z-0zB" firstAttribute="bottom" secondItem="KlC-uH-mmd" secondAttribute="bottom" id="Tzg-pU-aJ1"/>
+                            <constraint firstItem="RR2-9Z-0zB" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="j7c-Cx-rMZ" secondAttribute="trailing" constant="109" id="Z2R-oG-2lG"/>
                             <constraint firstItem="RR2-9Z-0zB" firstAttribute="trailing" secondItem="KlC-uH-mmd" secondAttribute="trailing" id="jtP-ld-dSU"/>
                             <constraint firstItem="KlC-uH-mmd" firstAttribute="top" secondItem="j7c-Cx-rMZ" secondAttribute="bottom" id="pU6-uR-5h7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="RR2-9Z-0zB"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="w6y-PK-dwP" appends="YES" id="kNl-8O-I2g"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="qaM-LE-WH2"/>
                     <connections>
@@ -328,53 +332,56 @@
             <point key="canvasLocation" x="-604" y="309"/>
         </scene>
         <!--Saved Colors View Controller-->
-        <scene sceneID="CRP-Zk-d2m">
+        <scene sceneID="25A-sb-Bkb">
             <objects>
-                <viewController id="2c1-Ai-qv0" customClass="SavedColorsViewController" customModule="SeeForMe" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="y7w-xT-gmQ">
+                <viewController id="Irg-pL-YyW" customClass="SavedColorsViewController" customModule="SeeForMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ytz-gg-w1y">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SeeForMe. Saved colors" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sva-5d-pfg">
-                                <rect key="frame" x="0.0" y="44" width="324" height="38"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="SeeForMe. Saved colors" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F9F-o5-tzl">
+                                <rect key="frame" x="0.0" y="44" width="339" height="38"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="29"/>
                                 <color key="textColor" red="0.066666666669999999" green="0.1764705882" blue="0.20392156859999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KG9-GR-ogV">
+                                <rect key="frame" x="0.0" y="82" width="414" height="780"/>
+                                <color key="backgroundColor" red="0.17254901959999999" green="0.67843137249999996" blue="0.76862745099999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="separatorColor" red="0.17254901959999999" green="0.67843137249999996" blue="0.76862745099999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="sectionIndexBackgroundColor" red="0.36862745099999999" green="0.99215686270000003" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.80000000000000004" green="0.85882352939999995" blue="0.86274509799999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="Sva-5d-pfg" firstAttribute="top" secondItem="DPi-G8-VMI" secondAttribute="top" id="QuE-Ua-YDC"/>
-                            <constraint firstItem="Sva-5d-pfg" firstAttribute="leading" secondItem="DPi-G8-VMI" secondAttribute="leading" id="jhg-bx-IaJ"/>
+                            <constraint firstItem="yQz-16-lRu" firstAttribute="trailing" secondItem="KG9-GR-ogV" secondAttribute="trailing" id="2dP-MT-QMs"/>
+                            <constraint firstItem="yQz-16-lRu" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="F9F-o5-tzl" secondAttribute="trailing" constant="75" id="7ob-FJ-mFy"/>
+                            <constraint firstItem="KG9-GR-ogV" firstAttribute="top" secondItem="F9F-o5-tzl" secondAttribute="bottom" id="Ai3-oP-bfu"/>
+                            <constraint firstItem="F9F-o5-tzl" firstAttribute="leading" secondItem="yQz-16-lRu" secondAttribute="leading" id="K6R-Vl-V7L"/>
+                            <constraint firstItem="F9F-o5-tzl" firstAttribute="top" secondItem="yQz-16-lRu" secondAttribute="top" id="KhB-kz-2X9"/>
+                            <constraint firstItem="yQz-16-lRu" firstAttribute="bottom" secondItem="KG9-GR-ogV" secondAttribute="bottom" id="oGQ-tB-en5"/>
+                            <constraint firstItem="KG9-GR-ogV" firstAttribute="leading" secondItem="yQz-16-lRu" secondAttribute="leading" id="wKt-G9-rWu"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="DPi-G8-VMI"/>
+                        <viewLayoutGuide key="safeArea" id="yQz-16-lRu"/>
                         <connections>
-                            <outletCollection property="gestureRecognizers" destination="UbJ-Jx-W0c" appends="YES" id="cZd-h9-Wl2"/>
-                            <outletCollection property="gestureRecognizers" destination="MXv-Bh-HRT" appends="YES" id="0a7-Gj-4cg"/>
+                            <outletCollection property="gestureRecognizers" destination="7bf-ev-nH3" appends="YES" id="RNt-rk-Kma"/>
                         </connections>
                     </view>
-                    <navigationItem key="navigationItem" id="Npi-HE-XL3"/>
+                    <navigationItem key="navigationItem" id="hwT-xA-NBb"/>
+                    <connections>
+                        <outlet property="savedColorsTableView" destination="KG9-GR-ogV" id="xMZ-Ib-u42"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ABg-Yp-fP6" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="UbJ-Jx-W0c">
-                    <connections>
-                        <action selector="handleTapGesture:" destination="2c1-Ai-qv0" id="cGh-Vb-mit"/>
-                    </connections>
-                </tapGestureRecognizer>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="1" id="MXv-Bh-HRT">
-                    <connections>
-                        <action selector="handleLongTapGesture:" destination="2c1-Ai-qv0" id="lyR-04-DA5"/>
-                    </connections>
-                </pongPressGestureRecognizer>
-                <screenEdgePanGestureRecognizer minimumNumberOfTouches="1" id="Cuc-2w-N6v">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pTY-KC-NLf" sceneMemberID="firstResponder"/>
+                <screenEdgePanGestureRecognizer minimumNumberOfTouches="1" id="7bf-ev-nH3">
                     <rectEdge key="edges" left="YES"/>
                     <connections>
-                        <action selector="handleScreenEdgePanGesture:" destination="2c1-Ai-qv0" id="WRs-ae-1eM"/>
+                        <action selector="handleScreenEdgePanGesture:" destination="Irg-pL-YyW" id="K29-AP-EoJ"/>
                     </connections>
                 </screenEdgePanGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="114" y="309"/>
+            <point key="canvasLocation" x="127.53623188405798" y="313.39285714285711"/>
         </scene>
     </scenes>
     <resources>
