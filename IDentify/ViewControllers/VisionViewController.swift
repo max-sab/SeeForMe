@@ -44,5 +44,6 @@ class VisionViewController: ActionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        voiceController.read(text: "SeeForMe. Text recognizing")
     }
 }

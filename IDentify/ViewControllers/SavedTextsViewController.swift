@@ -21,6 +21,7 @@ class SavedTextsViewController: UIViewController, UITableViewDelegate, UITableVi
         self.savedTextsTableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
         savedTextsTableView.delegate = self
         savedTextsTableView.dataSource = self
+        voiceController.read(text: "SeeForMe. Saved texts")
     }
 
     @IBAction func handleScreenEdgePanGesture(_ sender: UIScreenEdgePanGestureRecognizer) {

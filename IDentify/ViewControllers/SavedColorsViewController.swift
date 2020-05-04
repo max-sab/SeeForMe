@@ -22,6 +22,7 @@ class SavedColorsViewController: UIViewController, UITableViewDelegate, UITableV
         self.savedColorsTableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
         savedColorsTableView.delegate = self
         savedColorsTableView.dataSource = self
+        voiceController.read(text: "SeeForMe. Saved colors")
     }
 
     @IBAction func handleScreenEdgePanGesture(_ sender: UIScreenEdgePanGestureRecognizer) {

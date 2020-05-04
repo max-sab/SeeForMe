@@ -17,6 +17,7 @@ class ColorViewController: ActionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        voiceController.read(text: "SeeForMe. Color recognizing")
     }
 
     @IBAction func handleTapTwiceGesture(_ sender: UITapGestureRecognizer) {
@@ -41,9 +42,6 @@ class ColorViewController: ActionViewController {
                 let closestColor = self.colorController.findClosestColor(for: averageCentralColor, among: self.colorsCollection)
                 self.voiceController.read(text: "Be sure to tap twice if you want to save the result. This color is close to \(closestColor)")
                 self.currentColor = Color(name: closestColor, correspondingColor: averageCentralColor, dateSaved: nil)
-//                try? PHPhotoLibrary.shared().performChangesAndWait {
-//                    PHAssetChangeRequest.creationRequestForAsset(from: image.crop())
-//                }
             }
         }
     }
