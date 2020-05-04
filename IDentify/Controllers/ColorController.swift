@@ -22,13 +22,13 @@ class ColorController {
         return Double (result)
     }
 
-    func findClosestColor(for color: UIColor, among colorsCollection: [(red: CGFloat, green: CGFloat, blue: CGFloat, name: String)]) -> String {
+    func findClosestColor(for color: UIColor, among colorsCollection: [Color]) -> String {
         var minDistance = Double.infinity
         var closestColor = ""
 
         colorsCollection.forEach({
             currentColor in
-            let distance = distanceBetween(colorOne: color, and: UIColor(red: currentColor.red / 255, green: currentColor.green / 255, blue: currentColor.blue / 255, alpha: 1))
+            let distance = distanceBetween(colorOne: color, and: currentColor.correspondingColor)
             if minDistance > distance {
                 minDistance = distance
                 closestColor = currentColor.name

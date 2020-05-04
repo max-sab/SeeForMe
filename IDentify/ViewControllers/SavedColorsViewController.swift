@@ -18,49 +18,53 @@ class SavedColorsViewController: UIViewController, UITableViewDelegate, UITableV
 
 
     override func viewDidLoad() {
-           super.viewDidLoad()
-           self.savedColorsTableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
-           savedColorsTableView.delegate = self
-           savedColorsTableView.dataSource = self
-       }
+        super.viewDidLoad()
+        self.savedColorsTableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
+        savedColorsTableView.delegate = self
+        savedColorsTableView.dataSource = self
+    }
 
-       @IBAction func handleScreenEdgePanGesture(_ sender: UIScreenEdgePanGestureRecognizer) {
-           if sender.state == .began {
-               self.dismiss(animated: true, completion: nil)
-           }
-       }
+    @IBAction func handleScreenEdgePanGesture(_ sender: UIScreenEdgePanGestureRecognizer) {
+        if sender.state == .began {
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
 
-       func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-           return self.colorsCollection.count
-       }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.colorsCollection.count
+    }
 
-       func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-           let cell: UITableViewCell = self.savedColorsTableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier)!
-           cell.contentView.backgroundColor = UIColor(red: 94, green: 253, blue: 234, alpha: 1)
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell: UITableViewCell = self.savedColorsTableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier)!
+        cell.contentView.backgroundColor = UIColor(red: 94, green: 253, blue: 234, alpha: 1)
 
 
-           dateFormatter.dateStyle = .short
-           dateFormatter.timeStyle = .short
-           let dateString = dateFormatter.string(from: self.colorsCollection[indexPath.row].dateSaved)
+        dateFormatter.dateStyle = .short
+        dateFormatter.timeStyle = .short
 
-           cell.textLabel?.text = "Record №\(indexPath.row + 1) | Date: \(dateString)"
-           return cell
-       }
+        let dateString = dateFormatter.string(from: self.colorsCollection[indexPath.row].dateSaved ?? Date.distantFuture)
 
-       func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-           dateFormatter.dateStyle = .short
-           dateFormatter.timeStyle = .short
+        cell.textLabel?.text = "Record №\(indexPath.row + 1) | Date: \(dateString)"
+        return cell
+    }
 
-           voiceController.read(text: "Reading text saved on \(dateFormatter.string(from: self.colorsCollection[indexPath.row].dateSaved)). Content is: \(self.colorsCollection[indexPath.row].content)")
-       }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        dateFormatter.dateStyle = .short
+        dateFormatter.timeStyle = .short
+        if let date = self.colorsCollection[indexPath.row].dateSaved {
+            voiceController.read(text: "You saved this color on \(dateFormatter.string(from: date)). Your saved color is: \(self.colorsCollection[indexPath.row].name)")
+            } else {
+            voiceController.read(text: "Your saved color is: \(self.colorsCollection[indexPath.row].name)")
+        }
+    }
 
-       func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
 
-           if editingStyle == .delete {
-               DatabaseController.shared.removeSavedText(with: colorsCollection[indexPath.row].id)
-               colorsCollection.remove(at: indexPath.row)
-               tableView.deleteRows(at: [indexPath], with: .fade)
-           }
-       }
+        if editingStyle == .delete {
+            DatabaseController.shared.removeSavedColor(with: colorsCollection[indexPath.row].name)
+            colorsCollection.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
 
 }

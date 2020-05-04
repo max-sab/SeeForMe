@@ -10,4 +10,5 @@ import UIKit
 struct Color {
     let name: String
     let correspondingColor: UIColor
+    let dateSaved: Date?
 }
