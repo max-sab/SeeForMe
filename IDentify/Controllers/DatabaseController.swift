@@ -43,8 +43,7 @@ class DatabaseController {
 
             let initialPath = Bundle.main.path(forResource: "SFMDB", ofType: ".db")
             do {
-                if FileManager.default.fileExists(atPath: "\(dbPath)/SFMDB.db") {
-                    try fileManager.removeItem(atPath: "\(dbPath)/SFMDB.db")
+                if !FileManager.default.fileExists(atPath: "\(dbPath)/SFMDB.db") {
                     try fileManager.copyItem(atPath: initialPath!, toPath: "\(dbPath)/SFMDB.db")
                 }
             } catch let error as NSError {
