@@ -127,7 +127,7 @@ class DatabaseController {
 
         do {
             print("Before connection")
-            for color in try connection.prepare(savedTextsTable) {
+            for color in try connection.prepare(savedColorsTable) {
                 guard let date = formatter.date(from: color[colorDateSaved]) else {
                     print("Date incorrect")
                     return []

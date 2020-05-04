@@ -28,6 +28,8 @@ class VisionViewController: ActionViewController {
                     }
 
                     self.voiceController.read(text: text)
+                    self.voiceController.read(text: "Do you want to save this? Tap twice if yes")
+
                 })
 
                 return

@@ -170,12 +170,19 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EuF-e6-c7H">
                                 <rect key="frame" x="0.0" y="82" width="414" height="780"/>
                                 <color key="backgroundColor" red="0.80000000000000004" green="0.85882352939999995" blue="0.86274509799999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" allowsDirectInteraction="YES"/>
+                                    <bool key="isElement" value="YES"/>
+                                </accessibility>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="KuF-wa-bLC" appends="YES" id="tNb-8l-4up"/>
                                 </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.80000000000000004" green="0.85882352939999995" blue="0.86274509799999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <accessibility key="accessibilityConfiguration">
+                            <accessibilityTraits key="traits" allowsDirectInteraction="YES"/>
+                        </accessibility>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="WLf-Cy-K9W" firstAttribute="top" secondItem="Wzp-40-r9K" secondAttribute="top" id="1iQ-Dv-jXL"/>
@@ -233,12 +240,19 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xgh-kH-ghn">
                                 <rect key="frame" x="0.0" y="82" width="414" height="780"/>
                                 <color key="backgroundColor" red="0.80000000000000004" green="0.85882352939999995" blue="0.86274509799999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" allowsDirectInteraction="YES"/>
+                                    <bool key="isElement" value="YES"/>
+                                </accessibility>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="e1m-8c-Gu4" appends="YES" id="LsS-u0-odK"/>
                                 </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.80000000000000004" green="0.85882352939999995" blue="0.86274509799999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <accessibility key="accessibilityConfiguration">
+                            <accessibilityTraits key="traits" allowsDirectInteraction="YES"/>
+                        </accessibility>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="69S-z2-Y1G" firstAttribute="leading" secondItem="5Sj-hn-9dG" secondAttribute="leading" id="1Hc-DP-yv7"/>
@@ -301,6 +315,10 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.80000000000000004" green="0.85882352939999995" blue="0.86274509799999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <accessibility key="accessibilityConfiguration">
+                            <accessibilityTraits key="traits" allowsDirectInteraction="YES"/>
+                            <bool key="isElement" value="YES"/>
+                        </accessibility>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="KlC-uH-mmd" firstAttribute="leading" secondItem="RR2-9Z-0zB" secondAttribute="leading" id="5Qo-oM-HOY"/>
@@ -353,6 +371,10 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.80000000000000004" green="0.85882352939999995" blue="0.86274509799999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <accessibility key="accessibilityConfiguration">
+                            <accessibilityTraits key="traits" allowsDirectInteraction="YES"/>
+                            <bool key="isElement" value="YES"/>
+                        </accessibility>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="yQz-16-lRu" firstAttribute="trailing" secondItem="KG9-GR-ogV" secondAttribute="trailing" id="2dP-MT-QMs"/>
