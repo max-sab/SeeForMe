@@ -23,7 +23,7 @@ class VisionViewController: ActionViewController {
         if sender.state == .began {
             cameraController.captureImage {(image, error) in
                 guard let cgImage = image?.cgImage else {
-                    print(error ?? "Error occured while capturing image or converting it to CGImage type")
+                    self.voiceController.read(text: "Error occured while capturing image")
                     return
                 }
 

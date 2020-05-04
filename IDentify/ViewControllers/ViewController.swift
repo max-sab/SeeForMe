@@ -11,16 +11,8 @@ import AVFoundation
 import Vision
 
 class ViewController: UIViewController {
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-
-    @IBAction func readTextButtonPressed(_ sender: UIButton) {
-        let controller = VisionViewController()
-        self.present(controller, animated: true, completion: nil)
-    }
-    @IBAction func showColorsButtonPressed(_ sender: UIButton) {
     }
 }
 
