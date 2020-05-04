@@ -21,15 +21,19 @@ class MainPageViewController: UIViewController {
         switch buttonName {
         case "Read text":
             vc = self.storyboard?.instantiateViewController(withIdentifier: "VisionViewController") as! VisionViewController
+            self.present(vc, animated: false, completion: nil)
         case "Identify color":
             vc = self.storyboard?.instantiateViewController(withIdentifier: "ColorViewController") as! ColorViewController
+            self.present(vc, animated: false, completion: nil)
         case "Saved texts":
             vc = self.storyboard?.instantiateViewController(withIdentifier: "SavedTextsViewController") as! SavedTextsViewController
+            self.present(vc, animated: false, completion: nil)
         case "Saved colors":
             vc = self.storyboard?.instantiateViewController(withIdentifier: "SavedColorsViewController") as! SavedColorsViewController
+            self.present(vc, animated: false, completion: nil)
         default:
             voiceController.read(text: "Unexpected error occured. Please, restart an app")
-            self.present(vc, animated: false, completion: nil)
+
         }
     }
     override func viewDidLoad() {

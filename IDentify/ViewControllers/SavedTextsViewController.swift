@@ -41,7 +41,8 @@ class SavedTextsViewController: UIViewController, UITableViewDelegate, UITableVi
         dateFormatter.dateStyle = .short
         dateFormatter.timeStyle = .short
         let dateString = dateFormatter.string(from: self.textsCollection[indexPath.row].dateSaved)
-
+        
+        cell.textLabel?.textColor = #colorLiteral(red: 0.06666666667, green: 0.1764705882, blue: 0.2039215686, alpha: 1)
         cell.textLabel?.text = "Record №\(indexPath.row + 1) | Date: \(dateString)"
         return cell
     }

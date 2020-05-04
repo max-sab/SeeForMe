@@ -45,6 +45,7 @@ class SavedColorsViewController: UIViewController, UITableViewDelegate, UITableV
         let dateString = dateFormatter.string(from: self.colorsCollection[indexPath.row].dateSaved ?? Date.distantFuture)
 
         cell.textLabel?.text = "Сolor №\(indexPath.row + 1) | Date: \(dateString)"
+        cell.textLabel?.textColor = #colorLiteral(red: 0.06666666667, green: 0.1764705882, blue: 0.2039215686, alpha: 1)
         return cell
     }
 
