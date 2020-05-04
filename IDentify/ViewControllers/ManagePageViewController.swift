@@ -9,7 +9,7 @@
 import UIKit
 
 class ManagePageViewController: UIPageViewController {
-    var currentIndex: Int!
+    var currentIndex: Int?
     var buttonNames = ["Read text", "Identify color", "Saved texts", "Saved colors"]
 
     override func viewDidLoad() {
@@ -37,6 +37,33 @@ class ManagePageViewController: UIPageViewController {
         return page
     }
 
+    //code to support scrolling with accessibility and enable three finger swipe
+    override func accessibilityScroll(_ direction: UIAccessibilityScrollDirection) -> Bool {
+
+        //down means literally down
+        if direction == .down {
+            guard let currentController = viewMainPageController(currentIndex ?? 0), let pageViewcontroller = pageViewController(self, viewControllerAfter: currentController) else {
+                return false
+            }
+
+            //manually incrementing current index
+            self.currentIndex = self.currentIndex == nil ? 0 : self.currentIndex! + 1
+            //setting vcs manually, too
+            self.setViewControllers([pageViewcontroller], direction: .forward, animated: true, completion: nil)
+        } else if direction == .up {
+            guard let currentController = viewMainPageController(currentIndex ?? 0), let pageViewcontroller = pageViewController(self, viewControllerBefore: currentController) else {
+                return false
+            }
+            self.currentIndex = self.currentIndex == nil ? 0 : self.currentIndex! - 1
+            self.setViewControllers([pageViewcontroller], direction: .reverse, animated: true, completion: nil)
+        }
+
+        UIAccessibility.post(notification: .pageScrolled,
+                             argument: nil)
+
+        return true
+    }
+
 }
 
 extension ManagePageViewController: UIPageViewControllerDataSource {
@@ -51,7 +78,7 @@ extension ManagePageViewController: UIPageViewControllerDataSource {
 
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         if let viewController = viewController as? MainPageViewController, let index = viewController.buttonIndex,
-        (index + 1) < buttonNames.count {
+            (index + 1) < buttonNames.count {
             return viewMainPageController(index + 1)
         }
 

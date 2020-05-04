@@ -98,7 +98,7 @@ class VoiceController {
                 inputNode.removeTap(onBus: 0)
                 self.recognitionRequest = nil
                 self.recognitionTask = nil
-                print(error)
+                print(error!)
             }
         }
     }

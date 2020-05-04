@@ -10,7 +10,7 @@
         <!--Manage Page View Controller-->
         <scene sceneID="HZZ-pL-xMA">
             <objects>
-                <pageViewController storyboardIdentifier="PageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" pageSpacing="2" navigationOrientation="vertical" spineLocation="none" id="zDd-Z2-iPI" customClass="ManagePageViewController" customModule="SeeForMe" customModuleProvider="target" sceneMemberID="viewController"/>
+                <pageViewController storyboardIdentifier="PageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="vertical" spineLocation="none" id="zDd-Z2-iPI" customClass="ManagePageViewController" customModule="SeeForMe" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KPB-d3-btn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-880" y="-448"/>
@@ -321,6 +321,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tVd-Y6-oX2">
                                 <rect key="frame" x="169.66666666666666" y="641" width="75" height="75"/>
+                                <accessibility key="accessibilityConfiguration" hint="Press and say your command" label="Voice commands button"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="75" id="7Hz-TK-1C6"/>
                                     <constraint firstAttribute="height" constant="75" id="c2W-fC-4T9"/>
