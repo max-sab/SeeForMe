@@ -21,6 +21,8 @@
 		50B663C0245F704400DA6CE9 /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B663BF245F704400DA6CE9 /* Text.swift */; };
 		50D613D4245AF742005561DB /* VisionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D613D3245AF741005561DB /* VisionViewController.swift */; };
 		50D613D6245C6C3A005561DB /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D613D5245C6C39005561DB /* CameraController.swift */; };
+		50DA733B24608C4C004DA9B4 /* ManagePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DA733A24608C4C004DA9B4 /* ManagePageViewController.swift */; };
+		50DA733D24608F89004DA9B4 /* MainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DA733C24608F89004DA9B4 /* MainPageViewController.swift */; };
 		50DC337724602821004E6BFA /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DC337624602821004E6BFA /* Color.swift */; };
 		50DD605B2454B77D004602A9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DD605A2454B77D004602A9 /* AppDelegate.swift */; };
 		50DD605D2454B77D004602A9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DD605C2454B77D004602A9 /* SceneDelegate.swift */; };
@@ -44,6 +46,8 @@
 		50B663BF245F704400DA6CE9 /* Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Text.swift; sourceTree = "<group>"; };
 		50D613D3245AF741005561DB /* VisionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionViewController.swift; sourceTree = "<group>"; };
 		50D613D5245C6C39005561DB /* CameraController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
+		50DA733A24608C4C004DA9B4 /* ManagePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagePageViewController.swift; sourceTree = "<group>"; };
+		50DA733C24608F89004DA9B4 /* MainPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageViewController.swift; sourceTree = "<group>"; };
 		50DC337624602821004E6BFA /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		50DD60572454B77D004602A9 /* SeeForMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeeForMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50DD605A2454B77D004602A9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -88,6 +92,8 @@
 				50881682245DE1CF0051FBC5 /* ActionViewController.swift */,
 				509A6ABD245F5EEF00AFC486 /* SavedTextsViewController.swift */,
 				509A6AC1245F5F3300AFC486 /* SavedColorsViewController.swift */,
+				50DA733A24608C4C004DA9B4 /* ManagePageViewController.swift */,
+				50DA733C24608F89004DA9B4 /* MainPageViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -98,13 +104,6 @@
 				509A6ABB245F068E00AFC486 /* SFMDB.db */,
 			);
 			path = Database;
-			sourceTree = "<group>";
-		};
-		50DC337424601C8F004E6BFA /* Library */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Library;
 			sourceTree = "<group>";
 		};
 		50DC3375246027F0004E6BFA /* Models */ = {
@@ -137,7 +136,6 @@
 			children = (
 				50DC3375246027F0004E6BFA /* Models */,
 				509A6AC0245F5F1400AFC486 /* Database */,
-				50DC337424601C8F004E6BFA /* Library */,
 				509A6ABF245F5EF400AFC486 /* ViewControllers */,
 				5088167D245D9F250051FBC5 /* Controllers */,
 				50DD605A2454B77D004602A9 /* AppDelegate.swift */,
@@ -242,8 +240,10 @@
 				509A6AC2245F5F3300AFC486 /* SavedColorsViewController.swift in Sources */,
 				50DD605D2454B77D004602A9 /* SceneDelegate.swift in Sources */,
 				509A6ABA245EFADF00AFC486 /* DatabaseController.swift in Sources */,
+				50DA733B24608C4C004DA9B4 /* ManagePageViewController.swift in Sources */,
 				50D613D6245C6C3A005561DB /* CameraController.swift in Sources */,
 				5088167F245DAFC10051FBC5 /* VisionController.swift in Sources */,
+				50DA733D24608F89004DA9B4 /* MainPageViewController.swift in Sources */,
 				509A6AB5245EED0300AFC486 /* ImageUtils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

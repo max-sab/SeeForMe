@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ceH-ce-BGg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zDd-Z2-iPI">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
@@ -8,6 +8,14 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Manage Page View Controller-->
+        <scene sceneID="HZZ-pL-xMA">
+            <objects>
+                <pageViewController storyboardIdentifier="PageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" pageSpacing="2" navigationOrientation="vertical" spineLocation="min" id="zDd-Z2-iPI" customClass="ManagePageViewController" customModule="SeeForMe" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KPB-d3-btn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-880" y="-448"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="ezl-Wh-IQ0">
             <objects>
@@ -374,8 +382,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="SeeForMe. Saved colors" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F9F-o5-tzl">
-                                <rect key="frame" x="0.0" y="44" width="339" height="38"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SeeForMe. Saved colors" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F9F-o5-tzl">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="38"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="29"/>
                                 <color key="textColor" red="0.066666666669999999" green="0.1764705882" blue="0.20392156859999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -421,6 +429,52 @@
                 </screenEdgePanGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="127.53623188405798" y="313.39285714285711"/>
+        </scene>
+        <!--Main Page View Controller-->
+        <scene sceneID="MLg-q3-U54">
+            <objects>
+                <viewController storyboardIdentifier="MainPageViewController" id="hM5-bP-30a" customClass="MainPageViewController" customModule="SeeForMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4C2-eB-Zbq">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SeeForMe.Main" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FWB-6J-gSC">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="37.666666666666664"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="29"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BMM-1D-0w8">
+                                <rect key="frame" x="83" y="287" width="249" height="163"/>
+                                <color key="backgroundColor" red="0.17254901959999999" green="0.67843137249999996" blue="0.76862745099999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="30"/>
+                                <state key="normal" title="Name">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.80000000000000004" green="0.85882352939999995" blue="0.86274509799999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="FWB-6J-gSC" firstAttribute="top" secondItem="IVh-gD-OZR" secondAttribute="top" id="82J-Qf-SmU"/>
+                            <constraint firstItem="FWB-6J-gSC" firstAttribute="leading" secondItem="IVh-gD-OZR" secondAttribute="leading" id="L8A-SF-e71"/>
+                            <constraint firstItem="BMM-1D-0w8" firstAttribute="centerX" secondItem="4C2-eB-Zbq" secondAttribute="centerX" id="khu-ib-QxB"/>
+                            <constraint firstItem="BMM-1D-0w8" firstAttribute="centerY" secondItem="4C2-eB-Zbq" secondAttribute="centerY" id="tTd-gD-2OS"/>
+                            <constraint firstItem="IVh-gD-OZR" firstAttribute="trailing" secondItem="FWB-6J-gSC" secondAttribute="trailing" id="wCE-3v-acF"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="IVh-gD-OZR"/>
+                    </view>
+                    <connections>
+                        <outlet property="actionButton" destination="BMM-1D-0w8" id="jrw-bw-CDb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1ye-1d-8gq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1662.3188405797102" y="-447.554347826087"/>
         </scene>
     </scenes>
     <resources>
