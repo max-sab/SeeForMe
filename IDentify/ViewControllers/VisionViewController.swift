@@ -46,4 +46,12 @@ class VisionViewController: ActionViewController {
         super.viewDidLoad()
         voiceController.read(text: "SeeForMe. Text recognizing")
     }
+
+    override open var shouldAutorotate: Bool {
+       return false
+    }
+
+    override open var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+       return .portrait
+    }
 }

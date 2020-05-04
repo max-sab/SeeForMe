@@ -85,5 +85,13 @@ extension ManagePageViewController: UIPageViewControllerDataSource {
         return nil
     }
 
+    override open var shouldAutorotate: Bool {
+       return false
+    }
+
+    override open var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+       return .portrait
+    }
+
 
 }

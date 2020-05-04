@@ -70,4 +70,12 @@ class MainPageViewController: UIViewController {
             actionButton.setTitle(buttonName, for: .normal)
         }
     }
+
+    override open var shouldAutorotate: Bool {
+       return false
+    }
+
+    override open var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+       return .portrait
+    }
 }

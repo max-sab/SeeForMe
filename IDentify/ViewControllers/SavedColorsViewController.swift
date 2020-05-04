@@ -69,4 +69,12 @@ class SavedColorsViewController: UIViewController, UITableViewDelegate, UITableV
         }
     }
 
+    override open var shouldAutorotate: Bool {
+       return false
+    }
+
+    override open var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+       return .portrait
+    }
+
 }
