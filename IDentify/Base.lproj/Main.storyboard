@@ -300,7 +300,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BMM-1D-0w8">
-                                <rect key="frame" x="77" y="268" width="260" height="200"/>
+                                <rect key="frame" x="77" y="243" width="260" height="250"/>
                                 <color key="backgroundColor" red="0.17254901959999999" green="0.67843137249999996" blue="0.76862745099999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="200" id="F6y-WY-rCj"/>
@@ -319,11 +319,26 @@
                                     <action selector="actionButtonPressed:" destination="hM5-bP-30a" eventType="touchUpInside" id="F6K-n5-rZ5"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tVd-Y6-oX2">
+                                <rect key="frame" x="169.66666666666666" y="641" width="75" height="75"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="75" id="7Hz-TK-1C6"/>
+                                    <constraint firstAttribute="height" constant="75" id="c2W-fC-4T9"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="microphone"/>
+                                <connections>
+                                    <action selector="voiceCommandButtonPressed:" destination="hM5-bP-30a" eventType="touchUpInside" id="2eE-UP-VMs"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.80000000000000004" green="0.85882352939999995" blue="0.86274509799999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="FWB-6J-gSC" firstAttribute="top" secondItem="IVh-gD-OZR" secondAttribute="top" id="82J-Qf-SmU"/>
+                            <constraint firstItem="tVd-Y6-oX2" firstAttribute="centerX" secondItem="4C2-eB-Zbq" secondAttribute="centerX" id="IrA-YE-MQh"/>
                             <constraint firstItem="FWB-6J-gSC" firstAttribute="leading" secondItem="IVh-gD-OZR" secondAttribute="leading" id="L8A-SF-e71"/>
+                            <constraint firstItem="tVd-Y6-oX2" firstAttribute="top" secondItem="BMM-1D-0w8" secondAttribute="bottom" constant="148" id="N26-gK-9wu"/>
+                            <constraint firstItem="IVh-gD-OZR" firstAttribute="bottom" secondItem="tVd-Y6-oX2" secondAttribute="bottom" constant="20" id="fHk-xC-GlG"/>
+                            <constraint firstItem="tVd-Y6-oX2" firstAttribute="centerX" secondItem="BMM-1D-0w8" secondAttribute="centerX" id="fJh-wk-3Hw"/>
                             <constraint firstItem="BMM-1D-0w8" firstAttribute="centerX" secondItem="4C2-eB-Zbq" secondAttribute="centerX" id="khu-ib-QxB"/>
                             <constraint firstItem="BMM-1D-0w8" firstAttribute="centerY" secondItem="4C2-eB-Zbq" secondAttribute="centerY" id="tTd-gD-2OS"/>
                             <constraint firstItem="IVh-gD-OZR" firstAttribute="trailing" secondItem="FWB-6J-gSC" secondAttribute="trailing" id="wCE-3v-acF"/>
@@ -339,4 +354,7 @@
             <point key="canvasLocation" x="-1662.3188405797102" y="-447.554347826087"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="microphone" width="512" height="512"/>
+    </resources>
 </document>

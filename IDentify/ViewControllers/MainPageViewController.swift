@@ -14,11 +14,36 @@ class MainPageViewController: UIViewController {
     var buttonIndex: Int!
 
     private let voiceController = VoiceController()
+    private var awaitingForResult = true
 
+    @IBAction func voiceCommandButtonPressed(_ sender: UIButton) {
+        voiceController.recordAndRecognizeSpeech(completion: { command in
+            if self.awaitingForResult {
+                if command.lowercased() == "read" {
+                    self.presentViewController(with: "Read text")
+                } else if command.lowercased() == "identify"{
+                    self.presentViewController(with: "Identify color")
+                } else if  command.lowercased() == "text" {
+                    self.presentViewController(with: "Saved texts")
+                } else if command.lowercased() == "color" {
+                    self.presentViewController(with: "Saved colors")
+                } else {
+                    self.voiceController.read(text: "Command is not recognized. Please, retry your voice command")
+                }
+            }
+        })
+    }
 
     @IBAction func actionButtonPressed(_ sender: UIButton) {
+        guard let buttonName = buttonName else {
+            return
+        }
+        presentViewController(with: buttonName)
+    }
+
+    func presentViewController(with id: String) {
         var vc = UIViewController()
-        switch buttonName {
+        switch id {
         case "Read text":
             vc = self.storyboard?.instantiateViewController(withIdentifier: "VisionViewController") as! VisionViewController
             self.present(vc, animated: false, completion: nil)
@@ -33,9 +58,9 @@ class MainPageViewController: UIViewController {
             self.present(vc, animated: false, completion: nil)
         default:
             voiceController.read(text: "Unexpected error occured. Please, restart an app")
-
         }
     }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
