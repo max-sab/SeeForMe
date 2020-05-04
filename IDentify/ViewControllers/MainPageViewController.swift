@@ -17,8 +17,10 @@ class MainPageViewController: UIViewController {
     private var awaitingForResult = true
 
     @IBAction func voiceCommandButtonPressed(_ sender: UIButton) {
+        awaitingForResult = true
         voiceController.recordAndRecognizeSpeech(completion: { command in
             if self.awaitingForResult {
+                self.awaitingForResult = false
                 if command.lowercased() == "read" {
                     self.presentViewController(with: "Read text")
                 } else if command.lowercased() == "identify"{

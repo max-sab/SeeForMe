@@ -48,7 +48,7 @@ class VoiceController {
         recognitionTask?.cancel()
         self.recognitionTask = nil
         do {
-            try audioSession.setCategory(.record, mode: .measurement, options: .duckOthers)
+            try audioSession.setCategory(.playAndRecord, mode: .measurement, options: .duckOthers)
             try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
         } catch {
             read(text: "Unable to process your request")
@@ -98,7 +98,7 @@ class VoiceController {
                 inputNode.removeTap(onBus: 0)
                 self.recognitionRequest = nil
                 self.recognitionTask = nil
-                self.read(text: "Unable to process your command. Please, try again")
+                print(error)
             }
         }
     }
