@@ -14,7 +14,7 @@ class VoiceController {
     private var utteranceRate: Float = 0.4
     private let synthesizer = AVSpeechSynthesizer()
 
-    private let audioEngine = AVAudioEngine()
+//    private let audioEngine = AVAudioEngine()
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     private var speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "en_US"))
     private var recognitionTask: SFSpeechRecognitionTask?
@@ -39,6 +39,7 @@ class VoiceController {
     }
 
     func recordAndRecognizeSpeech(completion: @escaping (String) -> Void) {
+        let audioEngine = AVAudioEngine()
 
         guard let speechRecognizer = speechRecognizer else {
             read(text: "Couldn't create speech recognizer. Please restart your app and try again")
@@ -48,7 +49,7 @@ class VoiceController {
         recognitionTask?.cancel()
         self.recognitionTask = nil
         do {
-            try audioSession.setCategory(.playAndRecord, mode: .measurement, options: .duckOthers)
+            try audioSession.setCategory(.playAndRecord, options: .defaultToSpeaker)
             try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
         } catch {
             read(text: "Unable to process your request")
@@ -56,7 +57,6 @@ class VoiceController {
         }
 
         let inputNode = audioEngine.inputNode
-        inputNode.removeTap(onBus: 0)
 
         let recordingFormat = inputNode.outputFormat(forBus: 0)
         inputNode.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) {
@@ -88,17 +88,17 @@ class VoiceController {
             if let result = result {
                 DispatchQueue.main.async {
                     completion(result.bestTranscription.formattedString)
-                    self.recognitionTask?.cancel()
-                    self.recognitionTask?.finish()
                 }
             }
 
+            self.recognitionTask?.cancel()
+            self.recognitionTask?.finish()
+            audioEngine.stop()
+            self.recognitionRequest?.endAudio()
+            inputNode.removeTap(onBus: 0)
             if error != nil {
-                self.audioEngine.stop()
-                inputNode.removeTap(onBus: 0)
                 self.recognitionRequest = nil
                 self.recognitionTask = nil
-                print(error!)
             }
         }
     }
