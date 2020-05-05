@@ -10,6 +10,8 @@ import UIKit
 class MainPageViewController: UIViewController {
     
     @IBOutlet weak var actionButton: UIButton!
+    @IBOutlet weak var mainLabel: UILabel!
+
     var buttonName: String?
     var buttonIndex: Int!
 
@@ -68,6 +70,7 @@ class MainPageViewController: UIViewController {
 
         if let buttonName = buttonName {
             actionButton.setTitle(buttonName, for: .normal)
+            mainLabel.text = "SeeForMe. \(buttonName)"
         }
     }
 
