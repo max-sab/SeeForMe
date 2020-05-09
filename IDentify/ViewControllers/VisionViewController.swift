@@ -8,7 +8,6 @@
 
 import UIKit
 import Vision
-import VisionKit
 import AVFoundation
 
 class VisionViewController: ActionViewController {
