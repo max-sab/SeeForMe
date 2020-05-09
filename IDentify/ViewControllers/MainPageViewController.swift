@@ -15,12 +15,12 @@ class MainPageViewController: UIViewController {
     var buttonName: String?
     var buttonIndex: Int!
 
-    private let voiceController = VoiceController()
+    private let voice = Voice()
     private var awaitingForResult = true
 
     @IBAction func voiceCommandButtonPressed(_ sender: UIButton) {
         awaitingForResult = true
-        voiceController.recordAndRecognizeSpeech(completion: { command in
+        voice.recordAndRecognizeSpeech(completion: { command in
             if self.awaitingForResult {
                 self.awaitingForResult = false
                 if command.lowercased() == "read" {
@@ -32,7 +32,7 @@ class MainPageViewController: UIViewController {
                 } else if command.lowercased() == "color" {
                     self.presentViewController(with: "Saved colors")
                 } else {
-                    self.voiceController.read(text: "Command is not recognized. Please, retry your voice command")
+                    self.voice.read(text: "Command is not recognized. Please, retry your voice command")
                 }
             }
         })
@@ -61,7 +61,7 @@ class MainPageViewController: UIViewController {
             vc = self.storyboard?.instantiateViewController(withIdentifier: "SavedColorsViewController") as! SavedColorsViewController
             self.present(vc, animated: false, completion: nil)
         default:
-            voiceController.read(text: "Unexpected error occured. Please, restart an app")
+            voice.read(text: "Unexpected error occured. Please, restart an app")
         }
     }
 

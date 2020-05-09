@@ -12,8 +12,8 @@ class SavedTextsViewController: UIViewController, UITableViewDelegate, UITableVi
 
     @IBOutlet weak var savedTextsTableView: UITableView!
     private let cellReuseIdentifier = "cell"
-    private let voiceController = VoiceController()
-    private var textsCollection = DatabaseController.shared.getSavedTexts()
+    private let voice = Voice()
+    private var textsCollection = Database.shared.getSavedTexts()
     private let dateFormatter = DateFormatter()
 
     override func viewDidLoad() {
@@ -21,7 +21,7 @@ class SavedTextsViewController: UIViewController, UITableViewDelegate, UITableVi
         self.savedTextsTableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
         savedTextsTableView.delegate = self
         savedTextsTableView.dataSource = self
-        voiceController.read(text: "SeeForMe. Saved texts")
+        voice.read(text: "SeeForMe. Saved texts")
     }
 
     @IBAction func handleScreenEdgePanGesture(_ sender: UIScreenEdgePanGestureRecognizer) {
@@ -52,13 +52,13 @@ class SavedTextsViewController: UIViewController, UITableViewDelegate, UITableVi
         dateFormatter.dateStyle = .short
         dateFormatter.timeStyle = .short
 
-        voiceController.read(text: "Reading text saved on \(dateFormatter.string(from: self.textsCollection[indexPath.row].dateSaved)). Content is: \(self.textsCollection[indexPath.row].content)")
+        voice.read(text: "Reading text saved on \(dateFormatter.string(from: self.textsCollection[indexPath.row].dateSaved)). Content is: \(self.textsCollection[indexPath.row].content)")
     }
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
 
         if editingStyle == .delete {
-            DatabaseController.shared.removeSavedText(with: textsCollection[indexPath.row].id)
+            Database.shared.removeSavedText(with: textsCollection[indexPath.row].id)
             textsCollection.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }

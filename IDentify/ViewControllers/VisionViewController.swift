@@ -15,24 +15,24 @@ class VisionViewController: ActionViewController {
     var currentText = ""
 
     @IBAction func handleTapTwiceGesture(_ sender: UITapGestureRecognizer) {
-        DatabaseController.shared.saveNew(text: currentText)
+        Database.shared.saveNew(text: currentText)
     }
 
     @IBAction override func handleLongTapGesture(_ sender: UILongPressGestureRecognizer) {
         if sender.state == .began {
-            cameraController.captureImage {(image, error) in
+            camera.captureImage {(image, error) in
                 guard let cgImage = image?.cgImage else {
-                    self.voiceController.read(text: "Error occured while capturing image")
+                    self.voice.read(text: "Error occured while capturing image")
                     return
                 }
 
-                self.visionController.processReceived(cgImage: cgImage, completion: { (text, error) in
+                self.vision.processReceived(cgImage: cgImage, completion: { (text, error) in
                     if error != nil {
                         print(error!)
                         return
                     }
 
-                    self.voiceController.read(text: "Be sure to tap twice if you want to save the result. Recognized text is: \(text)")
+                    self.voice.read(text: "Be sure to tap twice if you want to save the result. Recognized text is: \(text)")
                     self.currentText = text
                 })
 
@@ -43,7 +43,7 @@ class VisionViewController: ActionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        voiceController.read(text: "SeeForMe. Text recognizing")
+        voice.read(text: "SeeForMe. Text recognizing")
     }
 
     override open var shouldAutorotate: Bool {

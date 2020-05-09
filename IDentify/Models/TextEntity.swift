@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Text {
+struct TextEntity {
     let id: Int
     let content: String
     let dateSaved: Date

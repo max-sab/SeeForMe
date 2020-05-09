@@ -1,5 +1,5 @@
 //
-//  CameraController.swift
+//  Camera.swift
 //  IDentify
 //
 //  Created by Maksym Sabadyshyn on 5/1/20.
@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class CameraController: NSObject {
+class Camera: NSObject {
 
     private var camera: AVCaptureDevice?
     private var captureSession: AVCaptureSession?
@@ -27,7 +27,7 @@ class CameraController: NSObject {
                 self.captureSession = AVCaptureSession()
 
                 //MARK: Congiguring capture device
-                guard let captureDevice = AVCaptureDevice.default(.builtInWideAngleCamera, for: AVMediaType.video, position: .back) else { throw CameraControllerError.cameraIsMissing }
+                guard let captureDevice = AVCaptureDevice.default(.builtInWideAngleCamera, for: AVMediaType.video, position: .back) else { throw CameraError.cameraIsMissing }
 
                 try captureDevice.lockForConfiguration()
                 captureDevice.autoFocusRangeRestriction = .near
@@ -35,13 +35,13 @@ class CameraController: NSObject {
                 self.camera = captureDevice
 
                 //MARK: Congiguring device input
-                guard let captureSession = self.captureSession else { throw CameraControllerError.captureSessionIsNotFound }
+                guard let captureSession = self.captureSession else { throw CameraError.captureSessionIsNotFound }
 
                 if let camera = self.camera {
                     self.cameraInput = try AVCaptureDeviceInput(device: camera)
                     if captureSession.canAddInput(self.cameraInput!) { captureSession.addInput(self.cameraInput!) }
                 } else {
-                    throw CameraControllerError.cameraIsMissing
+                    throw CameraError.cameraIsMissing
                 }
 
                 //MARK: Configuring photo output
@@ -68,7 +68,7 @@ class CameraController: NSObject {
 
 
     func showCameraPreview(on view: UIView) throws {
-        guard let captureSession = self.captureSession, captureSession.isRunning else { throw CameraControllerError.captureSessionIsNotFound }
+        guard let captureSession = self.captureSession, captureSession.isRunning else { throw CameraError.captureSessionIsNotFound }
 
         self.cameraPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
         self.cameraPreviewLayer?.connection?.videoOrientation = .portrait
@@ -78,7 +78,7 @@ class CameraController: NSObject {
     }
 
     func captureImage(completion: @escaping (UIImage?, Error?) -> Void) {
-        guard let captureSession = captureSession, captureSession.isRunning else { completion(nil, CameraControllerError.captureSessionIsNotFound); return }
+        guard let captureSession = captureSession, captureSession.isRunning else { completion(nil, CameraError.captureSessionIsNotFound); return }
 
         let settings = AVCapturePhotoSettings()
 
@@ -87,13 +87,13 @@ class CameraController: NSObject {
     }
 }
 
-extension CameraController: AVCapturePhotoCaptureDelegate {
+extension Camera: AVCapturePhotoCaptureDelegate {
 
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
         if let data = photo.fileDataRepresentation() {
             self.photoCompletion?(UIImage(data: data), nil)
         } else {
-            self.photoCompletion?(nil, CameraControllerError.photoDataIsInvalid)
+            self.photoCompletion?(nil, CameraError.photoDataIsInvalid)
         }
     }
 
@@ -103,7 +103,7 @@ extension CameraController: AVCapturePhotoCaptureDelegate {
     }
 }
 
-enum CameraControllerError: Swift.Error {
+enum CameraError: Swift.Error {
     case captureSessionIsNotFound
     case cameraIsMissing
     case photoDataIsInvalid

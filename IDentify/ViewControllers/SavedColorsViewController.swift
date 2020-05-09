@@ -12,8 +12,8 @@ class SavedColorsViewController: UIViewController, UITableViewDelegate, UITableV
 
     @IBOutlet weak var savedColorsTableView: UITableView!
     private let cellReuseIdentifier = "cell"
-    private let voiceController = VoiceController()
-    private var colorsCollection = DatabaseController.shared.getSavedColors()
+    private let voice = Voice()
+    private var colorsCollection = Database.shared.getSavedColors()
     private let dateFormatter = DateFormatter()
 
 
@@ -22,7 +22,7 @@ class SavedColorsViewController: UIViewController, UITableViewDelegate, UITableV
         self.savedColorsTableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
         savedColorsTableView.delegate = self
         savedColorsTableView.dataSource = self
-        voiceController.read(text: "SeeForMe. Saved colors")
+        voice.read(text: "SeeForMe. Saved colors")
     }
 
     @IBAction func handleScreenEdgePanGesture(_ sender: UIScreenEdgePanGestureRecognizer) {
@@ -54,16 +54,16 @@ class SavedColorsViewController: UIViewController, UITableViewDelegate, UITableV
         dateFormatter.dateStyle = .short
         dateFormatter.timeStyle = .short
         if let date = self.colorsCollection[indexPath.row].dateSaved {
-            voiceController.read(text: "You saved this color on \(dateFormatter.string(from: date)). Your saved color looks close to \(self.colorsCollection[indexPath.row].name). Red value is \(self.colorsCollection[indexPath.row].correspondingColor.rgb.red), green value is \(self.colorsCollection[indexPath.row].correspondingColor.rgb.green), and blue value is \(self.colorsCollection[indexPath.row].correspondingColor.rgb.blue)")
+            voice.read(text: "You saved this color on \(dateFormatter.string(from: date)). Your saved color looks close to \(self.colorsCollection[indexPath.row].name). Red value is \(self.colorsCollection[indexPath.row].correspondingColor.rgb.red), green value is \(self.colorsCollection[indexPath.row].correspondingColor.rgb.green), and blue value is \(self.colorsCollection[indexPath.row].correspondingColor.rgb.blue)")
             } else {
-            voiceController.read(text: "Your saved color is: \(self.colorsCollection[indexPath.row].name)")
+            voice.read(text: "Your saved color is: \(self.colorsCollection[indexPath.row].name)")
         }
     }
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
 
         if editingStyle == .delete {
-            DatabaseController.shared.removeSavedColor(with: colorsCollection[indexPath.row].name)
+            Database.shared.removeSavedColor(with: colorsCollection[indexPath.row].name)
             colorsCollection.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }

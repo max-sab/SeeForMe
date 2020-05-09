@@ -10,37 +10,37 @@ import UIKit
 
 class ColorViewController: ActionViewController {
 
-    private let colorController = ColorController()
-    private lazy var colorsCollection = DatabaseController.shared.getGeneralColors()
-    private var currentColor: Color?
+    private let color = Color()
+    private lazy var colorsCollection = Database.shared.getGeneralColors()
+    private var currentColor: ColorEntity?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        voiceController.read(text: "SeeForMe. Color recognizing")
+        voice.read(text: "SeeForMe. Color recognizing")
     }
 
     @IBAction func handleTapTwiceGesture(_ sender: UITapGestureRecognizer) {
         guard let currentColor = currentColor else {
-            voiceController.read(text: "Unable to save color")
+            voice.read(text: "Unable to save color")
             return
         }
 
-        DatabaseController.shared.saveNew(color: currentColor)
+        Database.shared.saveNew(color: currentColor)
     }
 
     @IBAction override func handleLongTapGesture(_ sender: UILongPressGestureRecognizer) {
         if sender.state == .began {
-            cameraController.captureImage {(image, error) in
+            camera.captureImage {(image, error) in
                 guard let imageAverageColor = image?.crop()?.averageColor else {
-                    self.voiceController.read(text: "Error occured while capturing image")
+                    self.voice.read(text: "Error occured while capturing image")
                     print(error ?? "Error occured while capturing image or converting it to CGImage type")
                     return
                 }
                 let averageCentralColor = imageAverageColor
 
-                let closestColor = self.colorController.findClosestColor(for: averageCentralColor, among: self.colorsCollection)
-                self.voiceController.read(text: "Be sure to tap twice if you want to save the result. This color is close to \(closestColor)")
-                self.currentColor = Color(name: closestColor, correspondingColor: averageCentralColor, dateSaved: nil)
+                let closestColor = self.color.findClosestColor(for: averageCentralColor, among: self.colorsCollection)
+                self.voice.read(text: "Be sure to tap twice if you want to save the result. This color is close to \(closestColor)")
+                self.currentColor = ColorEntity(name: closestColor, correspondingColor: averageCentralColor, dateSaved: nil)
             }
         }
     }

@@ -1,5 +1,5 @@
 //
-//  DatabaseController.swift
+//  Database.swift
 //  IDentify
 //
 //  Created by Maksym Sabadyshyn on 5/3/20.
@@ -11,10 +11,10 @@ import SQLite
 import CoreGraphics
 import UIKit
 
-class DatabaseController {
+class Database {
 
     let connection: Connection?
-    static let shared = DatabaseController()
+    static let shared = Database()
     let formatter = DateFormatter()
 
     //Texts
@@ -57,7 +57,7 @@ class DatabaseController {
         }
     }
 
-    func getGeneralColors() -> [Color] {
+    func getGeneralColors() -> [ColorEntity] {
 
         guard let connection = connection else {
             fatalError()
@@ -69,11 +69,11 @@ class DatabaseController {
         //        let blue = Expression<Int>("blue")
         //        let name = Expression<String>("name")
 
-        var generalColors = [Color]()
+        var generalColors = [ColorEntity]()
         do {
             for color in try connection.prepare(colorsTable) {
                 let newColor = UIColor(red: CGFloat(color[red] / 255), green: CGFloat(color[green] / 255), blue: CGFloat(color[blue] / 255), alpha: 1)
-                generalColors.append(Color(name: color[name], correspondingColor: newColor, dateSaved: nil))
+                generalColors.append(ColorEntity(name: color[name], correspondingColor: newColor, dateSaved: nil))
             }
         } catch {
             print(error)
@@ -82,12 +82,12 @@ class DatabaseController {
         return generalColors
     }
 
-    func getSavedTexts() -> [Text]{
+    func getSavedTexts() -> [TextEntity]{
         guard let connection = connection else {
             fatalError()
         }
 
-        var texts = [Text]()
+        var texts = [TextEntity]()
 
         let formatter = DateFormatter()
         formatter.dateFormat = "MM.dd.yy, HH:mm"
@@ -103,7 +103,7 @@ class DatabaseController {
                     return []
                 }
                 print("\(date)")
-                texts.append(Text(id: text[id], content: text[content], dateSaved: date))
+                texts.append(TextEntity(id: text[id], content: text[content], dateSaved: date))
             }
         } catch {
             print(error)
@@ -112,12 +112,12 @@ class DatabaseController {
         return texts
     }
 
-    func getSavedColors() -> [Color]{
+    func getSavedColors() -> [ColorEntity]{
         guard let connection = connection else {
             fatalError()
         }
 
-        var colors = [Color]()
+        var colors = [ColorEntity]()
 
 
         formatter.dateFormat = "MM.dd.yy, HH:mm"
@@ -133,7 +133,7 @@ class DatabaseController {
                 }
                 print("\(date)")
                 let correspondingColor = UIColor(red: CGFloat(color[red]), green: CGFloat(color[green]), blue: CGFloat(color[blue]), alpha: 1)
-                colors.append(Color(name: color[name], correspondingColor: correspondingColor, dateSaved: date))
+                colors.append(ColorEntity(name: color[name], correspondingColor: correspondingColor, dateSaved: date))
             }
         } catch {
             print(error)
@@ -158,7 +158,7 @@ class DatabaseController {
         }
     }
 
-    func saveNew(color: Color) {
+    func saveNew(color: ColorEntity) {
         guard let connection = connection else {
             fatalError()
         }

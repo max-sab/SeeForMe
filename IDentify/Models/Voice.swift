@@ -1,5 +1,5 @@
 //
-//  VoiceController.swift
+//  Voice.swift
 //  IDentify
 //
 //  Created by Maksym Sabadyshyn on 5/2/20.
@@ -9,7 +9,7 @@
 import AVFoundation
 import Speech
 
-class VoiceController {
+class Voice {
     // 0.5 is default utteranceRate defined by Apple
     private var utteranceRate: Float = 0.4
     private let synthesizer = AVSpeechSynthesizer()

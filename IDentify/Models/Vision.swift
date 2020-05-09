@@ -1,5 +1,5 @@
 //
-//  VisionController.swift
+//  Vision.swift
 //  IDentify
 //
 //  Created by Maksym Sabadyshyn on 5/2/20.
@@ -8,7 +8,7 @@
 
 import Vision
 
-class VisionController {
+class Vision {
     // Dispatch queue to perform Vision requests.
     private let textRecognitionQueue = DispatchQueue(label: "com.saba.textRecognitionQueue",
                                                      qos: .userInitiated, attributes: [], autoreleaseFrequency: .workItem)
@@ -41,7 +41,7 @@ class VisionController {
 
     func processReceived(cgImage: CGImage, completion: @escaping (String, Error?) -> Void) {
         guard let request = request else {
-            completion("", VisionControllerError.requestInvalid)
+            completion("", VisionError.requestInvalid)
             return
         }
 
@@ -61,6 +61,6 @@ class VisionController {
     }
 }
 
-enum VisionControllerError: Error {
+enum VisionError: Error {
     case requestInvalid
 }

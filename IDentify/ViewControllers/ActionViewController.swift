@@ -11,22 +11,22 @@ import UIKit
 class ActionViewController: UIViewController {
     @IBOutlet weak var resultPreviewView: UIView!
 
-    let cameraController = CameraController()
-    let voiceController = VoiceController()
-    let visionController = VisionController()
+    let camera = Camera()
+    let voice = Voice()
+    let vision = Vision()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         //configuring our camera controller for proper usage in the future
-        setupCameraController()
+        setupCamera()
     }
 
      @IBAction func handleLongTapGesture(_ sender: UILongPressGestureRecognizer) {
     }
 
     @IBAction func handleTapGesture(_ sender: UITapGestureRecognizer) {
-        voiceController.toggleSpeechSynthesizerState()
+        voice.toggleSpeechSynthesizerState()
     }
 
     @IBAction func handleScreenEdgePanGesture(_ sender: UIScreenEdgePanGestureRecognizer) {
@@ -35,12 +35,12 @@ class ActionViewController: UIViewController {
         }
     }
 
-    private func setupCameraController() {
-        cameraController.setupCamera {(error) in
+    private func setupCamera() {
+        camera.setupCamera {(error) in
             if let error = error {
                 print(error)
             }
-            try? self.cameraController.showCameraPreview(on: self.resultPreviewView)
+            try? self.camera.showCameraPreview(on: self.resultPreviewView)
         }
     }
 
