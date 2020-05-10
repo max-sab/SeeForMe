@@ -36,11 +36,10 @@ class ColorViewController: ActionViewController {
                     print(error ?? "Error occured while capturing image or converting it to CGImage type")
                     return
                 }
-                let averageCentralColor = imageAverageColor
 
-                let closestColor = self.color.findClosestColor(for: averageCentralColor, among: self.colorsCollection)
+                let closestColor = self.color.findClosestColor(for: imageAverageColor, among: self.colorsCollection)
                 self.voice.read(text: "Be sure to tap twice if you want to save the result. This color is close to \(closestColor)")
-                self.currentColor = ColorEntity(name: closestColor, correspondingColor: averageCentralColor, dateSaved: nil)
+                self.currentColor = ColorEntity(name: closestColor, correspondingColor: imageAverageColor, dateSaved: nil)
             }
         }
     }

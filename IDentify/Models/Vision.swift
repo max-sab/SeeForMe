@@ -60,7 +60,6 @@ class Vision {
         }
     }
 }
-
 enum VisionError: Error {
     case requestInvalid
 }

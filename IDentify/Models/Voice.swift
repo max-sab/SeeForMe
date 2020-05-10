@@ -22,7 +22,6 @@ class Voice {
 
 
     func read(text input: String) {
-        //print(input)
         synthesizer.stopSpeaking(at: AVSpeechBoundary.immediate)
         let utterance = AVSpeechUtterance(string: input)
         utterance.voice = AVSpeechSynthesisVoice(language: "en-US")

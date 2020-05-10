@@ -17,19 +17,29 @@ class Database {
     static let shared = Database()
     let formatter = DateFormatter()
 
-    //Texts
-    let savedTextsTable = Table("Texts")
+    let data = Table("Data")
+    let colors = Table("Colors")
+
     let id = Expression<Int>("id")
     let content = Expression<String>("content")
+    let isText = Expression<Int>("is_Text")
+    let dateSaved = Expression<String>("date")
+    let red = Expression<Int>("red")
+    let green = Expression<Int>("green")
+    let blue = Expression<Int>("blue")
+    let name = Expression<String>("name")
+    let isBase = Expression<Int>("is_Base")
+
+
+    //Texts
+    let savedTextsTable = Table("Texts")
+    //let id = Expression<Int>("id")
+
     let textDateSaved = Expression<String>("date")
 
     //Colors
     let savedColorsTable = Table("Colors")
-    let name = Expression<String>("name")
-    let red = Expression<Int>("red")
-    let green = Expression<Int>("green")
-    let blue = Expression<Int>("blue")
-    let colorDateSaved = Expression<String>("date")
+
 
 
     private init() {
@@ -44,7 +54,7 @@ class Database {
             let initialPath = Bundle.main.path(forResource: "SFMDB", ofType: ".db")
             do {
                 if !FileManager.default.fileExists(atPath: "\(dbPath)/SFMDB.db") {
-                    try fileManager.copyItem(atPath: initialPath!, toPath: "\(dbPath)/SFMDB.db")
+                try fileManager.copyItem(atPath: initialPath!, toPath: "\(dbPath)/SFMDB.db")
                 }
             } catch let error as NSError {
                 print("error occurred, here are the details:\n \(error)")
@@ -62,18 +72,13 @@ class Database {
         guard let connection = connection else {
             fatalError()
         }
-
-        let colorsTable = Table("BaseColors")
-        //        let red = Expression<Int>("red")
-        //        let green = Expression<Int>("green")
-        //        let blue = Expression<Int>("blue")
-        //        let name = Expression<String>("name")
+        let query = data.select(data[content], colors[red], colors[green], colors[blue]).join(colors, on: data[id] == colors[id]).filter(data[isText] == 0).filter(colors[isBase] == 1)
 
         var generalColors = [ColorEntity]()
         do {
-            for color in try connection.prepare(colorsTable) {
+            for color in try connection.prepare(query) {
                 let newColor = UIColor(red: CGFloat(color[red] / 255), green: CGFloat(color[green] / 255), blue: CGFloat(color[blue] / 255), alpha: 1)
-                generalColors.append(ColorEntity(name: color[name], correspondingColor: newColor, dateSaved: nil))
+                generalColors.append(ColorEntity(name: color[content], correspondingColor: newColor, dateSaved: nil))
             }
         } catch {
             print(error)
@@ -97,8 +102,9 @@ class Database {
 
         do {
             print("Before connection")
-            for text in try connection.prepare(savedTextsTable) {
-                guard let date = formatter.date(from: text[textDateSaved]) else {
+            let query = data.select(data[id], data[content], data[dateSaved]).filter(data[isText] == 1)
+            for text in try connection.prepare(query) {
+                guard let date = formatter.date(from: text[dateSaved]) else {
                     print("Date incorrect")
                     return []
                 }
@@ -117,29 +123,28 @@ class Database {
             fatalError()
         }
 
-        var colors = [ColorEntity]()
-
-
+        var colorsEntity = [ColorEntity]()
         formatter.dateFormat = "MM.dd.yy, HH:mm"
         //Kyiv not Kiev :(
         formatter.timeZone = .some(TimeZone(identifier: "Europe/Kiev")!)
 
         do {
             print("Before connection")
-            for color in try connection.prepare(savedColorsTable) {
-                guard let date = formatter.date(from: color[colorDateSaved]) else {
+            let query = data.select(data[content], data[dateSaved], colors[red], colors[green], colors[blue]).join(colors, on: data[id] == colors[id]).filter(data[isText] == 0).filter(colors[isBase] == 0)
+            for color in try connection.prepare(query) {
+                guard let date = formatter.date(from: color[dateSaved]) else {
                     print("Date incorrect")
                     return []
                 }
                 print("\(date)")
                 let correspondingColor = UIColor(red: CGFloat(color[red]), green: CGFloat(color[green]), blue: CGFloat(color[blue]), alpha: 1)
-                colors.append(ColorEntity(name: color[name], correspondingColor: correspondingColor, dateSaved: date))
+                colorsEntity.append(ColorEntity(name: color[content], correspondingColor: correspondingColor, dateSaved: date))
             }
         } catch {
             print(error)
         }
 
-        return colors
+        return colorsEntity
     }
 
     func saveNew(text: String) {
@@ -150,7 +155,7 @@ class Database {
         formatter.dateStyle = .short
         formatter.timeStyle = .short
         formatter.string(from: currentDateTime)
-        let insert = savedTextsTable.insert(content <- text, textDateSaved <- formatter.string(from: currentDateTime))
+        let insert = data.insert(content <- text, isText <- 1, dateSaved <- formatter.string(from: currentDateTime))
         do {
             try connection.run(insert)
         } catch {
@@ -166,37 +171,29 @@ class Database {
         formatter.dateStyle = .short
         formatter.timeStyle = .short
         formatter.string(from: currentDateTime)
-        let insert = savedColorsTable.insert(name <- color.name, red <- Int(color.correspondingColor.rgb.red * 255.0), green <- Int(color.correspondingColor.rgb.green * 255), blue <- Int(color.correspondingColor.rgb.blue * 255),  colorDateSaved <- formatter.string(from: currentDateTime))
+        let dataInsert = data.insert(content <- color.name, isText <- 0, dateSaved <- formatter.string(from: currentDateTime))
+
         do {
-            try connection.run(insert)
+            try connection.run(dataInsert)
+
+            var maxID = 0
+//            for ids in try connection.prepare("SELECT MAX(id) FROM Data") {
+//                maxID = ids[0] as! Int
+//            }
+
+            let colorInsert = savedColorsTable.insert(red <- Int(color.correspondingColor.rgb.red * 255.0), green <- Int(color.correspondingColor.rgb.green * 255), blue <- Int(color.correspondingColor.rgb.blue * 255), id <- Int(connection.lastInsertRowid), isBase <- 0)
+            try connection.run(colorInsert)
         } catch {
             print(error)
         }
     }
-
-    //    func saveNew(text: String) {
-    //        guard let connection = connection else {
-    //            fatalError()
-    //        }
-    //        let currentDateTime = Date()
-    //        formatter.dateStyle = .short
-    //        formatter.string(from: currentDateTime)
-    //        let insert = savedTextsTable.insert(content <- text, textDateSaved <- formatter.string(from: currentDateTime))
-    //        do {
-    //            try connection.run(insert)
-    //        } catch {
-    //            print(error)
-    //        }
-    //    }
-
 
     func removeSavedText(with textId: Int) {
         guard let connection = connection else {
             fatalError()
         }
 
-        let textToDelete = savedTextsTable.filter(id == textId)
-        
+        let textToDelete = data.filter(id == textId)
         do {
             try connection.run(textToDelete.delete())
         } catch {
@@ -209,9 +206,19 @@ class Database {
             fatalError()
         }
 
-        let colorToDelete = savedColorsTable.filter(name == colorName)
+        let dataToDelete = data.filter(content == colorName).filter(isText == 0)
+
+        var idToDelete = 0
+
 
         do {
+            for data in try connection.prepare(data.filter(content == colorName).filter(isText == 0)) {
+                idToDelete = data[id]
+            }
+            
+            try connection.run(dataToDelete.delete())
+            let colorToDelete = colors.filter(id == idToDelete)
+
             try connection.run(colorToDelete.delete())
         } catch {
             print(error)
