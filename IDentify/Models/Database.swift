@@ -176,11 +176,6 @@ class Database {
         do {
             try connection.run(dataInsert)
 
-            var maxID = 0
-//            for ids in try connection.prepare("SELECT MAX(id) FROM Data") {
-//                maxID = ids[0] as! Int
-//            }
-
             let colorInsert = savedColorsTable.insert(red <- Int(color.correspondingColor.rgb.red * 255.0), green <- Int(color.correspondingColor.rgb.green * 255), blue <- Int(color.correspondingColor.rgb.blue * 255), id <- Int(connection.lastInsertRowid), isBase <- 0)
             try connection.run(colorInsert)
         } catch {
